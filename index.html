@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CARI Y JULI — Landing</title>
+
+  <!-- Tailwind CDN y tema con tokens -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: '#F8EDDB',
+            foreground: '#1e1938',
+            border: '#2b244d',
+            card: '#ffffff',
+            muted: '#F3E8D8',
+            primary: '#F1772D',
+            'primary-foreground': '#ffffff',
+            accent: '#A882BF',
+            secondary: '#19734F',
+            'input-background': '#ffffff'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .font-serif {
+      font-family: "Times New Roman", Times, serif !important;
+    }
+
+    .font-sans {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans", "Liberation Sans", sans-serif !important;
+    }
+
+    :root {
+      --header-h: 72px;
+    }
+
+    /* default, se actualiza en JS */
+    html {
+      scroll-padding-top: var(--header-h);
+    }
+
+    /* anchors nativos */
+
+    .wedding-gradient {
+      background:
+        radial-gradient(1200px 600px at 50% 120%, rgba(0, 0, 0, .04), transparent 60%),
+        radial-gradient(800px 400px at 60% -10%, rgba(0, 0, 0, .03), transparent 55%),
+        theme('colors.background');
+    }
+
+    .floral-shadow {
+      box-shadow:
+        0 18px 36px rgba(241, 119, 45, .28),
+        0 6px 14px rgba(0, 0, 0, .06);
+    }
+
+    .elegant-border {
+      border: 1px solid color-mix(in srgb, theme('colors.border') 20%, transparent);
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-8px)
+      }
+
+      100% {
+        transform: translateY(0)
+      }
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn .6s ease forwards;
+      opacity: 0
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .animate-slide-up {
+      animation: slideUp .8s cubic-bezier(.22, .9, .31, 1) forwards;
+      opacity: 0
+    }
+  </style>
+</head>
+
+<body class="bg-background text-foreground">
+  <script>
+    window.messagePort = null
+    const allowedOrigins = [
+      'https://www.figma.com',
+      'https://staging.figma.com',
+      'https://local.figma.engineering:8443',
+      'http://localhost:9000',
+    ]
+    window.addEventListener('message', (e) => {
+      function sendMessage(data) {
+        if (window.messagePort) {
+          window.messagePort.postMessage({ data })
+        }
+      }
+      if (allowedOrigins.includes(e.origin)) {
+        if (e.data.type === 'iframe-init') {
+          window.messagePort = e.ports[0]
+          window.__PREVIEW_IFRAME_INITIAL_OPTIONS__ = e.data.previewIframeInitialOptions
+          sendMessage({ method: 'status', isReady: false })
+          if (e.data.initScriptBlob) {
+            import(URL.createObjectURL(e.data.initScriptBlob))
+          } else {
+            const script = document.createElement('script')
+            script.src = e.data.initScriptURL
+            script.crossOrigin = 'anonymous'
+            document.body.appendChild(script)
+          }
+        }
+      }
+    })
+  </script>
+
+  <script src="https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-e1485a6aaa367821.min.js.br"
+    crossorigin="anonymous"></script>
+
+  <div id="container">
+    <div class="tailwind">
+      <div id="node-0_6_container" style="height: 100%;">
+        <div class="bg-background relative w-full min-h-screen">
+
+          <!-- Header -->
+          <header class="fixed top-0 left-0 right-0 z-50 bg-background/70 backdrop-blur-md border-b border-border/50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+              <nav class="flex items-center justify-between">
+                <div
+                  class="font-serif text-lg md:text-xl font-medium text-foreground/80 cursor-pointer hover:text-foreground transition-colors"
+                  data-scroll-to="#hero">C &amp; J</div>
+
+                <!-- Desktop links -->
+                <div class="hidden md:flex items-center space-x-6">
+                  <button class="text-foreground/60 hover:text-primary transition-colors text-sm font-medium"
+                    data-scroll-to="#details">Detalles</button>
+                  <button class="text-foreground/60 hover:text-primary transition-colors text-sm font-medium"
+                    data-scroll-to="#location">Ubicación</button>
+                  <button
+                    class="bg-primary/10 hover:bg-primary hover:text-primary-foreground text-primary px-4 py-2 rounded-full text-sm font-medium transition-all duration-300"
+                    data-scroll-to="#rsvp">Confirmar</button>
+                </div>
+
+                <!-- Mobile toggle -->
+                <button id="menuToggle" class="md:hidden p-2 text-foreground/60 hover:text-foreground transition-colors"
+                  aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileMenu">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16">
+                    </path>
+                  </svg>
+                </button>
+              </nav>
+
+              <!-- Mobile menu -->
+              <div id="mobileMenu" class="md:hidden hidden pt-3">
+                <div class="flex flex-col gap-2 border-t border-border/30 pt-3">
+                  <button class="text-left py-2 px-1 text-foreground/80 hover:text-primary transition-colors"
+                    data-scroll-to="#details">Detalles</button>
+                  <button class="text-left py-2 px-1 text-foreground/80 hover:text-primary transition-colors"
+                    data-scroll-to="#location">Ubicación</button>
+                  <button class="text-left py-2 px-1 text-primary hover:text-primary/80 transition-colors"
+                    data-scroll-to="#rsvp">Confirmar</button>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <main>
+            <!-- HERO -->
+            <!-- CAMBIO: top padding por altura real del header + más padding-bottom -->
+            <section id="hero"
+              class="relative min-h-screen flex items-center justify-center wedding-gradient overflow-hidden pt-[var(--header-h)] pb-24 md:pb-32">
+              <div class="absolute inset-0 opacity-30">
+                <div class="absolute top-20 left-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-float"></div>
+                <div class="absolute bottom-20 right-10 w-40 h-40 bg-accent/20 rounded-full blur-3xl animate-float"
+                  style="animation-delay:1s"></div>
+                <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-secondary/20 rounded-full blur-2xl animate-float"
+                  style="animation-delay:2s"></div>
+              </div>
+
+              <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+                <div class="mb-8 md:mb-12 flex justify-center">
+                  <div class="relative">
+                    <div class="w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[28rem] relative animate-slide-up">
+                      <!-- SVG floral (igual que tu versión) -->
+                      <svg class="absolute inset-0 w-full h-full" viewBox="0 0 320 448" fill="none">
+                        <path d="M160 448C160 420 160 380 160 340" stroke="#2d8659" stroke-width="6"
+                          stroke-linecap="round"></path>
+                        <path d="M160 340C150 320 130 290 110 260" stroke="#2d8659" stroke-width="5"
+                          stroke-linecap="round"></path>
+                        <path d="M160 340C170 320 190 290 210 260" stroke="#2d8659" stroke-width="5"
+                          stroke-linecap="round"></path>
+                        <path d="M160 340C140 310 110 270 80 230" stroke="#2d8659" stroke-width="4"
+                          stroke-linecap="round"></path>
+                        <path d="M160 340C180 310 210 270 240 230" stroke="#2d8659" stroke-width="4"
+                          stroke-linecap="round"></path>
+                        <path d="M160 340C130 300 90 250 60 200" stroke="#2d8659" stroke-width="4"
+                          stroke-linecap="round"></path>
+                        <path d="M160 340C190 300 230 250 260 200" stroke="#2d8659" stroke-width="4"
+                          stroke-linecap="round"></path>
+                        <path d="M110 260C100 250 85 235 70 220" stroke="#2d8659" stroke-width="3"
+                          stroke-linecap="round"></path>
+                        <path d="M210 260C220 250 235 235 250 220" stroke="#2d8659" stroke-width="3"
+                          stroke-linecap="round"></path>
+                        <path d="M80 230C70 215 55 195 40 180" stroke="#2d8659" stroke-width="3" stroke-linecap="round">
+                        </path>
+                        <path d="M240 230C250 215 265 195 280 180" stroke="#2d8659" stroke-width="3"
+                          stroke-linecap="round"></path>
+                        <g transform="translate(160,80)">
+                          <ellipse cx="0" cy="-25" rx="18" ry="22" fill="#ff6635"></ellipse>
+                          <ellipse cx="-22" cy="-8" rx="18" ry="22" fill="#ff6635" transform="rotate(-60)"></ellipse>
+                          <ellipse cx="-22" cy="8" rx="18" ry="22" fill="#ff6635" transform="rotate(-120)"></ellipse>
+                          <ellipse cx="0" cy="25" rx="18" ry="22" fill="#ff6635" transform="rotate(180)"></ellipse>
+                          <ellipse cx="22" cy="8" rx="18" ry="22" fill="#ff6635" transform="rotate(120)"></ellipse>
+                          <ellipse cx="22" cy="-8" rx="18" ry="22" fill="#ff6635" transform="rotate(60)"></ellipse>
+                          <circle cx="0" cy="0" r="15" fill="#a678c4"></circle>
+                          <ellipse cx="0" cy="-8" rx="3" ry="6" fill="#ffffff"></ellipse>
+                          <ellipse cx="-7" cy="-4" rx="3" ry="6" fill="#ffffff" transform="rotate(-60)"></ellipse>
+                          <ellipse cx="-7" cy="4" rx="3" ry="6" fill="#ffffff" transform="rotate(-120)"></ellipse>
+                          <ellipse cx="0" cy="8" rx="3" ry="6" fill="#ffffff" transform="rotate(180)"></ellipse>
+                          <ellipse cx="7" cy="4" rx="3" ry="6" fill="#ffffff" transform="rotate(120)"></ellipse>
+                          <ellipse cx="7" cy="-4" rx="3" ry="6" fill="#ffffff" transform="rotate(60)"></ellipse>
+                          <circle cx="0" cy="0" r="6" fill="#8b5fbf"></circle>
+                        </g>
+                        <g transform="translate(110,180)">
+                          <ellipse cx="0" cy="-20" rx="15" ry="18" fill="#ff6635"></ellipse>
+                          <ellipse cx="-18" cy="-6" rx="15" ry="18" fill="#ff6635" transform="rotate(-60)"></ellipse>
+                          <ellipse cx="-18" cy="6" rx="15" ry="18" fill="#ff6635" transform="rotate(-120)"></ellipse>
+                          <ellipse cx="0" cy="20" rx="15" ry="18" fill="#ff6635" transform="rotate(180)"></ellipse>
+                          <ellipse cx="18" cy="6" rx="15" ry="18" fill="#ff6635" transform="rotate(120)"></ellipse>
+                          <ellipse cx="18" cy="-6" rx="15" ry="18" fill="#ff6635" transform="rotate(60)"></ellipse>
+                          <circle cx="0" cy="0" r="12" fill="#a678c4"></circle>
+                          <ellipse cx="0" cy="-6" rx="2.5" ry="5" fill="#ffffff"></ellipse>
+                          <ellipse cx="-5" cy="-3" rx="2.5" ry="5" fill="#ffffff" transform="rotate(-60)"></ellipse>
+                          <ellipse cx="-5" cy="3" rx="2.5" ry="5" fill="#ffffff" transform="rotate(-120)"></ellipse>
+                          <ellipse cx="0" cy="6" rx="2.5" ry="5" fill="#ffffff" transform="rotate(180)"></ellipse>
+                          <ellipse cx="5" cy="3" rx="2.5" ry="5" fill="#ffffff" transform="rotate(120)"></ellipse>
+                          <ellipse cx="5" cy="-3" rx="2.5" ry="5" fill="#ffffff" transform="rotate(60)"></ellipse>
+                          <circle cx="0" cy="0" r="5" fill="#8b5fbf"></circle>
+                        </g>
+                        <g transform="translate(210,180)">
+                          <ellipse cx="0" cy="-20" rx="15" ry="18" fill="#ff6635"></ellipse>
+                          <ellipse cx="-18" cy="-6" rx="15" ry="18" fill="#ff6635" transform="rotate(-60)"></ellipse>
+                          <ellipse cx="-18" cy="6" rx="15" ry="18" fill="#ff6635" transform="rotate(-120)"></ellipse>
+                          <ellipse cx="0" cy="20" rx="15" ry="18" fill="#ff6635" transform="rotate(180)"></ellipse>
+                          <ellipse cx="18" cy="6" rx="15" ry="18" fill="#ff6635" transform="rotate(120)"></ellipse>
+                          <ellipse cx="18" cy="-6" rx="15" ry="18" fill="#ff6635" transform="rotate(60)"></ellipse>
+                          <circle cx="0" cy="0" r="12" fill="#a678c4"></circle>
+                          <ellipse cx="0" cy="-6" rx="2.5" ry="5" fill="#ffffff"></ellipse>
+                          <ellipse cx="-5" cy="-3" rx="2.5" ry="5" fill="#ffffff" transform="rotate(-60)"></ellipse>
+                          <ellipse cx="-5" cy="3" rx="2.5" ry="5" fill="#ffffff" transform="rotate(-120)"></ellipse>
+                          <ellipse cx="0" cy="6" rx="2.5" ry="5" fill="#ffffff" transform="rotate(180)"></ellipse>
+                          <ellipse cx="5" cy="3" rx="2.5" ry="5" fill="#ffffff" transform="rotate(120)"></ellipse>
+                          <ellipse cx="5" cy="-3" rx="2.5" ry="5" fill="#ffffff" transform="rotate(60)"></ellipse>
+                          <circle cx="0" cy="0" r="5" fill="#8b5fbf"></circle>
+                        </g>
+                        <g transform="translate(160,280)">
+                          <ellipse cx="0" cy="-18" rx="14" ry="16" fill="#ff6635"></ellipse>
+                          <ellipse cx="-16" cy="-5" rx="14" ry="16" fill="#ff6635" transform="rotate(-60)"></ellipse>
+                          <ellipse cx="-16" cy="5" rx="14" ry="16" fill="#ff6635" transform="rotate(-120)"></ellipse>
+                          <ellipse cx="0" cy="18" rx="14" ry="16" fill="#ff6635" transform="rotate(180)"></ellipse>
+                          <ellipse cx="16" cy="5" rx="14" ry="16" fill="#ff6635" transform="rotate(120)"></ellipse>
+                          <ellipse cx="16" cy="-5" rx="14" ry="16" fill="#ff6635" transform="rotate(60)"></ellipse>
+                          <circle cx="0" cy="0" r="11" fill="#a678c4"></circle>
+                          <ellipse cx="0" cy="-5" rx="2" ry="4" fill="#ffffff"></ellipse>
+                          <ellipse cx="-4" cy="-2.5" rx="2" ry="4" fill="#ffffff" transform="rotate(-60)"></ellipse>
+                          <ellipse cx="-4" cy="2.5" rx="2" ry="4" fill="#ffffff" transform="rotate(-120)"></ellipse>
+                          <ellipse cx="0" cy="5" rx="2" ry="4" fill="#ffffff" transform="rotate(180)"></ellipse>
+                          <ellipse cx="4" cy="2.5" rx="2" ry="4" fill="#ffffff" transform="rotate(120)"></ellipse>
+                          <ellipse cx="4" cy="-2.5" rx="2" ry="4" fill="#ffffff" transform="rotate(60)"></ellipse>
+                          <circle cx="0" cy="0" r="4" fill="#8b5fbf"></circle>
+                        </g>
+                        <ellipse cx="80" cy="130" rx="20" ry="35" fill="#2d8659" transform="rotate(-25 80 130)">
+                        </ellipse>
+                        <ellipse cx="240" cy="130" rx="20" ry="35" fill="#2d8659" transform="rotate(25 240 130)">
+                        </ellipse>
+                        <ellipse cx="60" cy="190" rx="18" ry="32" fill="#359168" transform="rotate(-45 60 190)">
+                        </ellipse>
+                        <ellipse cx="260" cy="190" rx="18" ry="32" fill="#359168" transform="rotate(45 260 190)">
+                        </ellipse>
+                        <ellipse cx="90" cy="240" rx="16" ry="28" fill="#2d8659" transform="rotate(-15 90 240)">
+                        </ellipse>
+                        <ellipse cx="230" cy="240" rx="16" ry="28" fill="#2d8659" transform="rotate(15 230 240)">
+                        </ellipse>
+                        <ellipse cx="130" cy="120" rx="14" ry="25" fill="#359168" transform="rotate(-10 130 120)">
+                        </ellipse>
+                        <ellipse cx="190" cy="120" rx="14" ry="25" fill="#359168" transform="rotate(10 190 120)">
+                        </ellipse>
+                        <ellipse cx="120" cy="220" rx="12" ry="22" fill="#2d8659" transform="rotate(-30 120 220)">
+                        </ellipse>
+                        <ellipse cx="200" cy="220" rx="12" ry="22" fill="#2d8659" transform="rotate(30 200 220)">
+                        </ellipse>
+                        <ellipse cx="140" cy="320" rx="25" ry="40" fill="#2d8659" transform="rotate(-20 140 320)">
+                        </ellipse>
+                        <ellipse cx="180" cy="320" rx="25" ry="40" fill="#359168" transform="rotate(20 180 320)">
+                        </ellipse>
+                        <ellipse cx="70" cy="100" rx="8" ry="18" fill="#a678c4" transform="rotate(-20 70 100)">
+                        </ellipse>
+                        <ellipse cx="250" cy="100" rx="8" ry="18" fill="#a678c4" transform="rotate(20 250 100)">
+                        </ellipse>
+                        <ellipse cx="40" cy="160" rx="7" ry="16" fill="#8b5fbf" transform="rotate(-40 40 160)">
+                        </ellipse>
+                        <ellipse cx="280" cy="160" rx="7" ry="16" fill="#8b5fbf" transform="rotate(40 280 160)">
+                        </ellipse>
+                        <ellipse cx="100" cy="300" rx="6" ry="14" fill="#a678c4" transform="rotate(-10 100 300)">
+                        </ellipse>
+                        <ellipse cx="220" cy="300" rx="6" ry="14" fill="#a678c4" transform="rotate(10 220 300)">
+                        </ellipse>
+                        <circle cx="50" cy="220" r="12" fill="#ff6635"></circle>
+                        <circle cx="270" cy="220" r="12" fill="#ff6635"></circle>
+                        <circle cx="90" cy="160" r="10" fill="#ff7845"></circle>
+                        <circle cx="230" cy="160" r="10" fill="#ff7845"></circle>
+                        <ellipse cx="110" cy="150" rx="8" ry="15" fill="#359168" transform="rotate(-35 110 150)">
+                        </ellipse>
+                        <ellipse cx="210" cy="150" rx="8" ry="15" fill="#359168" transform="rotate(35 210 150)">
+                        </ellipse>
+                        <ellipse cx="150" cy="200" rx="7" ry="13" fill="#2d8659" transform="rotate(-10 150 200)">
+                        </ellipse>
+                        <ellipse cx="170" cy="200" rx="7" ry="13" fill="#2d8659" transform="rotate(10 170 200)">
+                        </ellipse>
+                        <ellipse cx="130" cy="260" rx="6" ry="12" fill="#359168" transform="rotate(-25 130 260)">
+                        </ellipse>
+                        <ellipse cx="190" cy="260" rx="6" ry="12" fill="#359168" transform="rotate(25 190 260)">
+                        </ellipse>
+                        <ellipse cx="160" cy="140" rx="5" ry="12" fill="#8b5fbf"></ellipse>
+                        <ellipse cx="80" cy="280" rx="5" ry="11" fill="#a678c4" transform="rotate(-50 80 280)">
+                        </ellipse>
+                        <ellipse cx="240" cy="280" rx="5" ry="11" fill="#a678c4" transform="rotate(50 240 280)">
+                        </ellipse>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-6 md:mb-8 animate-fade-in" style="animation-delay:.3s">
+                  <h1
+                    class="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold text-foreground mb-4 tracking-wide leading-tight">
+                    CARI Y JULI</h1>
+                  <div class="w-16 sm:w-24 h-px bg-primary mx-auto"></div>
+                </div>
+
+                <div class="mb-8 md:mb-12 animate-fade-in" style="animation-delay:.6s">
+                  <p class="font-serif text-lg sm:text-xl md:text-2xl text-foreground/80 mb-3 md:mb-4">Jardín Japonés,
+                    Buenos Aires</p>
+                  <p class="font-sans text-base sm:text-lg md:text-xl text-foreground/70">19 de Noviembre, 2025 • 14:00
+                    HRS</p>
+                </div>
+
+                <div class="animate-fade-in" style="animation-delay:.9s">
+                  <button
+                    class="bg-primary hover:bg-primary/90 text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-base sm:text-lg transition-all duration-300 floral-shadow hover:shadow-xl transform hover:scale-105 min-h-[48px] min-w-[200px]"
+                    data-scroll-to="#rsvp">Confirmar Asistencia</button>
+                </div>
+              </div>
+            </section>
+
+            <!-- DETALLES -->
+            <section id="details" class="py-16 md:py-20 lg:py-32 bg-card scroll-mt-[var(--header-h)]">
+              <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16">
+                  <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-foreground mb-4">Detalles del
+                    Evento</h2>
+                  <div class="w-12 sm:w-16 h-px bg-primary mx-auto"></div>
+                </div>
+
+                <div class="space-y-8 md:space-y-0 md:grid md:grid-cols-2 md:gap-8 lg:gap-16">
+                  <div class="text-center animate-fade-in">
+                    <div class="mb-6">
+                      <div
+                        class="w-14 h-14 sm:w-16 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-7 h-7 sm:w-8 sm:h-8 text-primary" fill="none" stroke="currentColor"
+                          viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                          </path>
+                        </svg>
+                      </div>
+                      <h3 class="font-serif text-xl sm:text-2xl font-medium text-foreground mb-2">Ceremonia</h3>
+                      <p class="text-foreground/70 mb-4 text-lg sm:text-base">14:00 HRS</p>
+                      <p class="text-foreground/60 text-sm sm:text-base leading-relaxed max-w-sm mx-auto">Nos
+                        encontramos para celebrar el inicio de nuestro camino juntos en una ceremonia íntima rodeados de
+                        nuestros seres queridos.</p>
+                    </div>
+                  </div>
+
+                  <div class="text-center animate-fade-in" style="animation-delay:.2s">
+                    <div class="mb-6">
+                      <div
+                        class="w-14 h-14 sm:w-16 sm:h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-7 h-7 sm:w-8 sm:h-8 text-accent" fill="none" stroke="currentColor"
+                          viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3">
+                          </path>
+                        </svg>
+                      </div>
+                      <h3 class="font-serif text-xl sm:text-2xl font-medium text-foreground mb-2">Celebración</h3>
+                      <p class="text-foreground/70 mb-4 text-lg sm:text-base">15:00 HRS</p>
+                      <p class="text-foreground/60 text-sm sm:text-base leading-relaxed max-w-sm mx-auto">Después de la
+                        ceremonia, los invitamos a compartir una velada especial con música, baile y un delicioso
+                        almuerzo.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-12 md:mt-16 p-6 md:p-8 bg-muted rounded-2xl animate-fade-in" style="animation-delay:.4s">
+                  <h4 class="font-serif text-lg sm:text-xl font-medium text-foreground mb-6 text-center">Información
+                    Importante</h4>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 text-sm sm:text-base text-foreground/70">
+                    <div class="p-3 sm:p-0">
+                      <h5 class="font-medium text-foreground mb-2">Dress Code</h5>
+                      <p>Formal / Elegante</p>
+                    </div>
+                    <div class="p-3 sm:p-0">
+                      <h5 class="font-medium text-foreground mb-2">Estacionamiento</h5>
+                      <p>Disponible en el lugar</p>
+                    </div>
+                    <div class="p-3 sm:p-0">
+                      <h5 class="font-medium text-foreground mb-2">Contacto</h5>
+                      <p>Para consultas: +54 9 11 XXXX-XXXX</p>
+                    </div>
+                    <div class="p-3 sm:p-0">
+                      <h5 class="font-medium text-foreground mb-2">Regalo</h5>
+                      <p>Su presencia es nuestro regalo</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- UBICACIÓN -->
+            <section id="location" class="py-16 md:py-20 lg:py-32 wedding-gradient scroll-mt-[var(--header-h)]">
+              <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16 animate-fade-in">
+                  <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-foreground mb-4">Ubicación
+                  </h2>
+                  <div class="w-12 sm:w-16 h-px bg-primary mx-auto"></div>
+                </div>
+
+                <div class="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
+                  <div class="animate-fade-in">
+                    <h3
+                      class="font-serif text-xl sm:text-2xl font-medium text-foreground mb-4 sm:mb-6 text-center lg:text-left">
+                      CABA, Buenos Aires</h3>
+                    <div class="space-y-4 sm:space-y-6">
+                      <div class="flex items-start space-x-3 sm:space-x-4">
+                        <div
+                          class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                          </svg>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                          <h4 class="font-medium text-foreground mb-1 text-sm sm:text-base">Dirección</h4>
+                          <p class="text-foreground/70 text-sm sm:text-base">Av. Casares y Av. Libertador<br>CABA,
+                            Buenos Aires</p>
+                        </div>
+                      </div>
+
+                      <div class="flex items-start space-x-3 sm:space-x-4">
+                        <div
+                          class="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                          <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                          </svg>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                          <h4 class="font-medium text-foreground mb-1 text-sm sm:text-base">Horario</h4>
+                          <p class="text-foreground/70 text-sm sm:text-base">19 de Noviembre, 2025<br>14:00 HRS</p>
+                        </div>
+                      </div>
+
+                      <div class="flex items-start space-x-3 sm:space-x-4">
+                        <div
+                          class="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                          <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM21 17a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M7 17h10l4-4V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8l4 4z"></path>
+                          </svg>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                          <h4 class="font-medium text-foreground mb-1 text-sm sm:text-base">Transporte</h4>
+                          <p class="text-foreground/70 text-sm sm:text-base">Fácil acceso en auto<br>Estacionamiento
+                            disponible</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mt-6 sm:mt-8 text-center lg:text-left">
+                      <button id="btnMaps"
+                        class="inline-flex items-center justify-center space-x-2 bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-lg font-medium transition-all duration-300 floral-shadow min-h-[48px] w-full sm:w-auto">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                          </path>
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <span>Ver en Google Maps</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="animate-fade-in" style="animation-delay:.2s">
+                    <div
+                      class="bg-muted rounded-2xl p-6 sm:p-8 h-64 sm:h-80 flex items-center justify-center elegant-border">
+                      <div class="text-center max-w-xs mx-auto">
+                        <div
+                          class="w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                          <svg class="w-6 h-6 sm:w-8 sm:h-8 text-primary" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7">
+                            </path>
+                          </svg>
+                        </div>
+                        <h4 class="font-serif text-lg sm:text-xl font-medium text-foreground mb-2">Mapa Interactivo</h4>
+                        <iframe class="block mx-auto w-[200px] h-[200px] md:w-[350px] md:h-[200px]"
+                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.0983121207946!2d-58.410157930879535!3d-34.5763788778627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb57a4147c5c7%3A0xfc930bf72fdf871f!2zSmFyZMOtbiBKYXBvbsOpcw!5e0!3m2!1ses-419!2sar!4v1758209088832!5m2!1ses-419!2sar"
+                          style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                          title="Mapa Jardín Japonés">
+                        </iframe>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- RSVP -->
+            <section id="rsvp" class="py-16 md:py-20 lg:py-32 bg-card scroll-mt-[var(--header-h)]">
+              <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-8 md:mb-12 animate-fade-in">
+                  <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-foreground mb-4">RSVP</h2>
+                  <div class="w-12 sm:w-16 h-px bg-primary mx-auto mb-4 sm:mb-6"></div>
+                  <p class="text-foreground/70 text-base sm:text-lg">Por favor confirma tu asistencia antes del 15 de
+                    Noviembre</p>
+                </div>
+
+                <!-- NUEVO FORM -->
+                <form action="enviar.php" method="POST" id="rsvpForm" class="space-y-5 sm:space-y-6 animate-fade-in" style="animation-delay:.2s">
+                  <div id="invitados" class="space-y-6">
+                    <div class="invitado bg-muted/40 rounded-xl p-4 sm:p-5 elegant-border">
+                      <h4 class="font-serif text-lg font-medium mb-4">Invitado <span class="inv-num">1</span></h4>
+                      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                          <label class="block text-sm font-medium text-foreground mb-2">Nombre</label>
+                          <input type="text"
+                            class="w-full px-4 py-3 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                            name="nombre[]" oninput="validarTexto(this)" required>
+                        </div>
+                        <div>
+                          <label class="block text-sm font-medium text-foreground mb-2">Apellido</label>
+                          <input type="text"
+                            class="w-full px-4 py-3 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                            name="apellido[]" oninput="validarTexto(this)" required>
+                        </div>
+                        <div>
+                          <label class="block text-sm font-medium text-foreground mb-2">Menú</label>
+                          <select
+                            class="w-full px-4 py-3 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                            name="menu[]">
+                            <option value="Estandar">Estándar</option>
+                            <option value="Vegano">Vegano</option>
+                            <option value="Vegetariano">Vegetariano</option>
+                            <option value="Celiaco">Celíaco</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pt-1">
+                    <button type="button" id="agregarInvitado"
+                      class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-lg font-medium transition-all">
+                      <span>+ Agregar invitado</span>
+                    </button>
+                    <p id="invitadoAviso" class="mt-2 text-sm text-foreground/60 hidden">Máximo 5 invitados.</p>
+                  </div>
+
+                  <div>
+                    <label for="phone" class="block text-sm font-medium text-foreground mb-2">Teléfono</label>
+                    <input type="tel" id="phone" name="phone"
+                      class="w-full px-4 py-3 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                      placeholder="+54 9 11 XXXX-XXXX">
+                  </div>
+
+                  <!-- === REGALOS (carousel de selección única) === -->
+<!-- === REGALOS (carousel de selección única) === -->
+<div class="mt-6">
+  <label class="block text-sm font-medium text-foreground mb-3">Regalos:</label>
+
+  <div class="relative">
+    <!-- Flechas (solo desktop) -->
+    <button type="button" id="giftPrev"
+      class="hidden md:inline-flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2
+             items-center justify-center w-9 h-9 rounded-full bg-background/80 border border-border
+             hover:bg-background shadow-sm z-10"
+      aria-label="Anterior">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+      </svg>
+    </button>
+
+    <div id="giftCarousel"
+         class="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 px-1
+                [scrollbar-width:none] [-ms-overflow-style:none]"
+         style="scrollbar-width:none;">
+
+      <!-- Repite para cada excursión -->
+      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+        <input type="radio" name="regalo" value="Ceremonia del té en Kioto con kimono" class="peer sr-only" required>
+        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                    ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+          <img src="ceremonia_del_te.webp" alt="Ceremonia del té en Kioto con kimono" class="w-full h-full object-cover">
+        </div>
+        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Ceremonia del té</span>
+      </label>
+
+      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+        <input type="radio" name="regalo" value="Clase privada de sushi en Tokio" class="peer sr-only">
+        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                    ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+          <img src="sushi.webp" alt="Clase privada de sushi en Tokio" class="w-full h-full object-cover">
+        </div>
+        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Clase de sushi</span>
+      </label>
+
+      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+        <input type="radio" name="regalo" value="Alquiler de kimonos + paseo en Gion" class="peer sr-only">
+        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                    ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+          <img src="kimono_gion.webp" alt="Alquiler de kimonos + paseo en Gion" class="w-full h-full object-cover">
+        </div>
+        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Gion en kimono</span>
+      </label>
+
+            <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+        <input type="radio" name="regalo" value="Alquiler de kimonos + paseo en Gion" class="peer sr-only">
+        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                    ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+          <img src="samurai.webp" alt="Alquiler de kimonos + paseo en Gion" class="w-full h-full object-cover">
+        </div>
+        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Experiencia de samurai</span>
+      </label>
+
+      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+        <input type="radio" name="regalo" value="Visita al Museo Ghibli en Mitaka" class="peer sr-only">
+        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                    ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+          <img src="fushimi.webp" alt="Visita al Museo Ghibli en Mitaka" class="w-full h-full object-cover">
+        </div>
+        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Excursión Nara + Fushimi Inari</span>
+      </label>
+
+      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+        <input type="radio" name="regalo" value="Tour templos de Kioto" class="peer sr-only">
+        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                    ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+          <img src="templos.webp" alt="Tour templos de Kioto" class="w-full h-full object-cover">
+        </div>
+        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Tour templos de Kioto</span>
+      </label>
+
+      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+        <input type="radio" name="regalo" value="Excursión a Nikko desde Tokio" class="peer sr-only">
+        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                    ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+          <img src="nikko.webp" alt="Excursión a Nikko desde Tokio" class="w-full h-full object-cover">
+        </div>
+        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Excursión a Nikko desde Tokio</span>
+      </label>
+
+      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+        <input type="radio" name="regalo" value="Hiroshima y Miyajima" class="peer sr-only">
+        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                    ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+          <img src="hiroshima.webp" alt="Hiroshima y Miyajima" class="w-full h-full object-cover">
+        </div>
+        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Hiroshima y Miyajima</span>
+      </label>
+
+      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+        <input type="radio" name="regalo" value="Tour privado Monte Fuji y Lago Ashi" class="peer sr-only">
+        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                    ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+          <img src="fuji.webp" alt="Tour privado Monte Fuji y Lago Ashi" class="w-full h-full object-cover">
+        </div>
+        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Tour privado Monte Fuji y Lago Ashi</span>
+      </label>
+
+      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+        <input type="radio" name="regalo" value="Rickshaw en Arashiyama + bosque de bambú" class="peer sr-only">
+        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                    ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+          <img src="arashiyama.webp" alt="Rickshaw en Arashiyama + bosque de bambú" class="w-full h-full object-cover">
+        </div>
+        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Rickshaw en Arashiyama</span>
+      </label>
+
+      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+        <input type="radio" name="regalo" value="Crucero nocturno bahía de Tokio" class="peer sr-only">
+        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                    ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+          <img src="crucero.webp" alt="Crucero nocturno bahía de Tokio" class="w-full h-full object-cover">
+        </div>
+        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Crucero nocturno Tokio</span>
+      </label>
+
+      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+        <input type="radio" name="regalo" value="Excursión Hanami o Momiji" class="peer sr-only">
+        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                    ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+          <img src="hanami.webp" alt="Excursión Hanami o Momiji" class="w-full h-full object-cover">
+        </div>
+        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Excursión Hanami o Momiji</span>
+      </label>
+
+      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+        <input type="radio" name="regalo" value="Senderismo Takayama y Shirakawa-go" class="peer sr-only">
+        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                    ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+          <img src="takayama.webp" alt="Senderismo Takayama y Shirakawa-go" class="w-full h-full object-cover">
+        </div>
+        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Senderismo Takayama y Shirakawa-go</span>
+      </label>
+
+      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+        <input type="radio" name="regalo" value="Paseo en barco por el río Hozugawa" class="peer sr-only">
+        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                    ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+          <img src="hozugawa.webp" alt="Paseo en barco por el río Hozugawa" class="w-full h-full object-cover">
+        </div>
+        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Barco río Hozugawa</span>
+      </label>
+
+      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+        <input type="radio" name="regalo" value="Noche en ryokan con onsen en Hakone" class="peer sr-only">
+        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                    ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+          <img src="ryokan.webp" alt="Noche en ryokan con onsen en Hakone" class="w-full h-full object-cover">
+        </div>
+        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Noche en Ryokan con onsen Hakone</span>
+      </label>
+
+      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+        <input type="radio" name="regalo" value="Cena kaiseki gourmet en Kioto" class="peer sr-only">
+        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                    ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+          <img src="kaiseki.webp" alt="Cena kaiseki gourmet en Kioto" class="w-full h-full object-cover">
+        </div>
+        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Cena kaiseki en Kioto</span>
+      </label>
+
+      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+        <input type="radio" name="regalo" value="Experiencia sumo" class="peer sr-only">
+        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                    ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+          <img src="sumo.webp" alt="Experiencia sumo" class="w-full h-full object-cover">
+        </div>
+        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Experiencia sumo</span>
+      </label>
+
+      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+        <input type="radio" name="regalo" value="Tour nocturno izakayas en Shinjuku" class="peer sr-only">
+        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                    ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+          <img src="shinjunku.webp" alt="Tour nocturno izakayas en Shinjuku" class="w-full h-full object-cover">
+        </div>
+        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Tour nocturno izakayas en Shinjuku</span>
+      </label>
+
+      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+        <input type="radio" name="regalo" value="Visita al Museo Ghibli en Mitaka" class="peer sr-only">
+        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                    ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+          <img src="ghibli.webp" alt="Visita al Museo Ghibli en Mitaka" class="w-full h-full object-cover">
+        </div>
+        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Museo Ghibli en Mitaka</span>
+      </label>
+      
+    </div>
+
+    <button type="button" id="giftNext"
+      class="hidden md:inline-flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2
+             items-center justify-center w-9 h-9 rounded-full bg-background/80 border border-border
+             hover:bg-background shadow-sm z-10"
+      aria-label="Siguiente">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </div>
+
+  <p class="text-xs text-foreground/60 mt-2">Elegí una sola excursión (podés cambiarla antes de enviar).</p>
+</div>
+<!-- === /REGALOS === -->
+
+
+                  <div>
+                    <label for="message" class="block text-sm font-medium text-foreground mb-2">Mensaje para los
+                      novios</label>
+                    <textarea id="message" name="message" rows="4"
+                      class="w-full px-4 py-3 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                      placeholder="¡Déjanos un mensaje especial!"></textarea>
+                  </div>
+
+                  <div class="pt-4 sm:pt-6">
+                    <button type="submit"
+                      class="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-4 sm:py-5 px-6 rounded-lg font-medium transition-all duration-300 floral-shadow hover:shadow-xl transform hover:scale-[1.02] min-h-[52px] active:scale-[0.98]">Confirmar
+                      Asistencia</button>
+                  </div>
+                </form>
+
+                <div class="mt-8 md:mt-12 p-4 sm:p-6 bg-muted rounded-xl text-center animate-fade-in"
+                  style="animation-delay:.4s">
+                  <p class="text-foreground/70 text-sm sm:text-base">¿Tenés alguna pregunta? Contactanos al <a
+                      href="tel:+5491123456789" class="text-primary hover:text-primary/80 transition-colors">+54 9 11
+                      XXXX-XXXX</a></p>
+                </div>
+              </div>
+            </section>
+          </main>
+
+          <!-- FOOTER -->
+          <footer class="bg-foreground text-background py-12 md:py-16">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center mb-6 md:mb-8">
+                <svg class="w-12 h-6 sm:w-16 sm:h-8 mx-auto opacity-60" viewBox="0 0 64 32" fill="none">
+                  <ellipse cx="20" cy="16" rx="4" ry="3" fill="currentColor" opacity=".7"></ellipse>
+                  <ellipse cx="32" cy="12" rx="5" ry="4" fill="currentColor" opacity=".8"></ellipse>
+                  <ellipse cx="44" cy="16" rx="4" ry="3" fill="currentColor" opacity=".7"></ellipse>
+                  <path d="M16 16C16 16 20 20 24 18" stroke="currentColor" stroke-width="1" fill="none" opacity=".6">
+                  </path>
+                  <path d="M28 12C28 12 32 16 36 14" stroke="currentColor" stroke-width="1" fill="none" opacity=".6">
+                  </path>
+                  <path d="M40 16C40 16 44 20 48 18" stroke="currentColor" stroke-width="1" fill="none" opacity=".6">
+                  </path>
+                </svg>
+              </div>
+
+              <div class="text-center mb-6 md:mb-8">
+                <h3 class="font-serif text-xl sm:text-2xl md:text-3xl font-medium mb-3 sm:mb-4">Cari y Juli</h3>
+                <p class="text-background/80 text-base sm:text-lg mb-2">22 de Noviembre, 2025</p>
+                <p class="text-background/70 text-sm sm:text-base">San Isidro, Buenos Aires</p>
+              </div>
+
+              <div class="text-center mb-6 md:mb-8">
+                <p class="text-background/60 text-xs sm:text-sm mb-3">Para consultas, contáctanos:</p>
+                <div class="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
+                  <a href="mailto:boda@ejemplo.com"
+                    class="text-background/80 hover:text-background transition-colors text-sm min-h-[44px] flex items-center">boda@ejemplo.com</a>
+                  <span class="text-background/40 hidden sm:inline">•</span>
+                  <a href="tel:+5491112345678"
+                    class="text-background/80 hover:text-background transition-colors text-sm min-h-[44px] flex items-center">+54
+                    9 11 1234-5678</a>
+                </div>
+              </div>
+
+              <div class="w-16 sm:w-24 h-px bg-background/20 mx-auto mb-4 sm:mb-6"></div>
+              <div class="text-center">
+                <p class="text-background/50 text-xs">© 2025 Cari y Juli. Hecho con amor.</p>
+              </div>
+            </div>
+          </footer>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== Interacciones: menú, scroll, RSVP dinámico ====== -->
+  <script>
+    /* -- Actualiza la variable --header-h con la altura real del header -- */
+    function setHeaderHeightVar() {
+      const h = document.querySelector('header')?.offsetHeight || 72;
+      document.documentElement.style.setProperty('--header-h', h + 'px');
+    }
+    window.addEventListener('load', setHeaderHeightVar);
+    window.addEventListener('resize', setHeaderHeightVar);
+
+    /* -------- Smooth scroll helper -------- */
+    function smoothScrollTo(selector) {
+      const target = document.querySelector(selector);
+      if (!target) return;
+      const cssVar = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 72;
+      const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - cssVar;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+
+    /* -------- Toggle menú hamburguesa -------- */
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden');
+        menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      // cerrar al elegir una opción
+      mobileMenu.querySelectorAll('[data-scroll-to]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    /* -------- Botones con data-scroll-to -------- */
+    document.querySelectorAll('[data-scroll-to]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        const sel = e.currentTarget.getAttribute('data-scroll-to');
+        if (sel) smoothScrollTo(sel);
+      });
+    });
+
+    /* -------- Botón Google Maps -------- */
+    const btnMaps = document.getElementById('btnMaps');
+    if (btnMaps) {
+      btnMaps.addEventListener('click', () => {
+        const q = encodeURIComponent('San Isidro, Buenos Aires, Argentina');
+        window.open(`https://maps.app.goo.gl/5Z6sprsPg7rPHqo39`, '_blank');
+      });
+    }
+
+    /* -------- Validación nombre/apellido -------- */
+    function validarTexto(input) {
+      let limpio = input.value
+        .replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñÜü' -]/g, '')
+        .replace(/\s{2,}/g, ' ')
+        .trimStart();
+      input.value = limpio;
+    }
+    window.validarTexto = validarTexto;
+
+    /* -------- RSVP dinámico (hasta 5 invitados) -------- */
+    const MAX_INVITADOS = 5;
+    const contenedor = document.getElementById('invitados');
+    const btnAgregar = document.getElementById('agregarInvitado');
+    const aviso = document.getElementById('invitadoAviso');
+
+    function actualizarNumeros() {
+      contenedor.querySelectorAll('.invitado').forEach((card, idx) => {
+        const span = card.querySelector('.inv-num');
+        if (span) span.textContent = idx + 1;
+      });
+    }
+
+    function crearCardInvitado() {
+      const card = document.createElement('div');
+      card.className = 'invitado bg-muted/40 rounded-xl p-4 sm:p-5 elegant-border relative';
+      card.innerHTML = `
+        <div class="flex items-center justify-between mb-4">
+          <h4 class="font-serif text-lg font-medium">Invitado <span class="inv-num"></span></h4>
+          <button type="button" class="remove-invitado text-foreground/60 hover:text-primary text-sm px-2 py-1 rounded">
+            Quitar
+          </button>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-foreground mb-2">Nombre</label>
+            <input type="text" class="w-full px-4 py-3 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" name="nombre[]" oninput="validarTexto(this)" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-foreground mb-2">Apellido</label>
+            <input type="text" class="w-full px-4 py-3 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" name="apellido[]" oninput="validarTexto(this)" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-foreground mb-2">Menú</label>
+            <select class="w-full px-4 py-3 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer" name="menu[]">
+              <option value="Estandar">Estándar</option>
+              <option value="Vegano">Vegano</option>
+              <option value="Vegetariano">Vegetariano</option>
+              <option value="Celiaco">Celíaco</option>
+            </select>
+          </div>
+        </div>
+      `;
+      return card;
+    }
+
+    if (btnAgregar && contenedor) {
+      btnAgregar.addEventListener('click', () => {
+        const actuales = contenedor.querySelectorAll('.invitado').length;
+        if (actuales >= MAX_INVITADOS) {
+          aviso.classList.remove('hidden');
+          return;
+        }
+        aviso.classList.add('hidden');
+
+        const card = crearCardInvitado();
+        contenedor.appendChild(card);
+        actualizarNumeros();
+
+        const removeBtn = card.querySelector('.remove-invitado');
+        if (removeBtn) {
+          removeBtn.addEventListener('click', () => {
+            card.remove();
+            actualizarNumeros();
+            if (contenedor.querySelectorAll('.invitado').length < MAX_INVITADOS) {
+              aviso.classList.add('hidden');
+            }
+          });
+        }
+      });
+      actualizarNumeros();
+    }
+
+    const rsvpForm = document.getElementById('rsvpForm');
+    if (rsvpForm) {
+      rsvpForm.addEventListener('submit', (e) => {
+        // e.preventDefault();
+      });
+    }
+
+      const giftCarousel = document.getElementById('giftCarousel');
+  document.getElementById('giftPrev')?.addEventListener('click', () =>
+    giftCarousel.scrollBy({ left: -240, behavior: 'smooth' })
+  );
+  document.getElementById('giftNext')?.addEventListener('click', () =>
+    giftCarousel.scrollBy({ left: 240, behavior: 'smooth' })
+  );
+
+  /* -------- Evitar múltiples envíos del formulario -------- */
+(function () {
+  const form = document.getElementById('rsvpForm');
+  if (!form) return;
+
+  const submitBtn = form.querySelector("button[type='submit']");
+  let isSubmitting = false;
+
+  form.addEventListener('submit', function (event) {
+    // Si ya se está enviando, bloqueamos el doble submit
+    if (isSubmitting) {
+      event.preventDefault();
+      return;
+    }
+    isSubmitting = true;
+
+    // Deshabilitar botón y dar feedback
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.dataset.originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Enviando...';
+      submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+      submitBtn.setAttribute('aria-busy', 'true');
+    }
+
+    // Fallback: si seguimos en la misma página (error servidor/validación),
+    // reactivar el botón a los 15s para no “romper” la UI.
+    setTimeout(() => {
+      if (!document.hidden && submitBtn && isSubmitting) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = submitBtn.dataset.originalText || 'Confirmar Asistencia';
+        submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+        submitBtn.removeAttribute('aria-busy');
+        isSubmitting = false;
+      }
+    }, 15000);
+  });
+})();
+
+  </script>
+</body>
+
+</html>
