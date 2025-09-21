@@ -117,45 +117,27 @@
       animation: slideUp .8s cubic-bezier(.22, .9, .31, 1) forwards;
       opacity: 0
     }
+
+      html, body { width: 100%; overflow-x: hidden; }
+  img, svg, iframe { max-width: 100%; height: auto; }
+  /* Suaviza scroll horizontal del carrusel en iOS */
+  #giftCarousel { -webkit-overflow-scrolling: touch; }
+
+    :root { --bg: #F8EDDB; --border: #2b244d; }
+
+  .wedding-gradient{
+    background:
+      radial-gradient(1200px 600px at 50% 120%, rgba(0,0,0,.04), transparent 60%),
+      radial-gradient(800px 400px at 60% -10%, rgba(0,0,0,.03), transparent 55%),
+      var(--bg);
+  }
+  .elegant-border{
+    border: 1px solid color-mix(in srgb, var(--border) 20%, transparent);
+  }
   </style>
 </head>
 
 <body class="bg-background text-foreground">
-  <script>
-    window.messagePort = null
-    const allowedOrigins = [
-      'https://www.figma.com',
-      'https://staging.figma.com',
-      'https://local.figma.engineering:8443',
-      'http://localhost:9000',
-    ]
-    window.addEventListener('message', (e) => {
-      function sendMessage(data) {
-        if (window.messagePort) {
-          window.messagePort.postMessage({ data })
-        }
-      }
-      if (allowedOrigins.includes(e.origin)) {
-        if (e.data.type === 'iframe-init') {
-          window.messagePort = e.ports[0]
-          window.__PREVIEW_IFRAME_INITIAL_OPTIONS__ = e.data.previewIframeInitialOptions
-          sendMessage({ method: 'status', isReady: false })
-          if (e.data.initScriptBlob) {
-            import(URL.createObjectURL(e.data.initScriptBlob))
-          } else {
-            const script = document.createElement('script')
-            script.src = e.data.initScriptURL
-            script.crossOrigin = 'anonymous'
-            document.body.appendChild(script)
-          }
-        }
-      }
-    })
-  </script>
-
-  <script src="https://www.figma.com/webpack-artifacts/assets/code_components_preview_iframe-e1485a6aaa367821.min.js.br"
-    crossorigin="anonymous"></script>
-
   <div id="container">
     <div class="tailwind">
       <div id="node-0_6_container" style="height: 100%;">
