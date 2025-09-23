@@ -118,31 +118,54 @@
       opacity: 0
     }
 
-      html, body { width: 100%; overflow-x: hidden; }
-  img, svg, iframe { max-width: 100%; height: auto; }
-  /* Suaviza scroll horizontal del carrusel en iOS */
-#giftCarousel{
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-x: contain;
-  touch-action: pan-x;            /* iOS: sólo gesto horizontal dentro del carrusel */
-  max-width: 100vw;               /* jamás crece más que la ventana */
-  contain: content;               /* aísla layout/scroll del resto */
-}
+    html,
+    body {
+      width: 100%;
+      overflow-x: hidden;
+    }
 
-html, body { width:100%; overflow-x:hidden; overscroll-behavior-x: none; }
+    img,
+    svg,
+    iframe {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Suaviza scroll horizontal del carrusel en iOS */
+    #giftCarousel {
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
+      touch-action: pan-x;
+      /* iOS: sólo gesto horizontal dentro del carrusel */
+      max-width: 100vw;
+      /* jamás crece más que la ventana */
+      contain: content;
+      /* aísla layout/scroll del resto */
+    }
+
+    html,
+    body {
+      width: 100%;
+      overflow-x: hidden;
+      overscroll-behavior-x: none;
+    }
 
 
-    :root { --bg: #F8EDDB; --border: #2b244d; }
+    :root {
+      --bg: #F8EDDB;
+      --border: #2b244d;
+    }
 
-  .wedding-gradient{
-    background:
-      radial-gradient(1200px 600px at 50% 120%, rgba(0,0,0,.04), transparent 60%),
-      radial-gradient(800px 400px at 60% -10%, rgba(0,0,0,.03), transparent 55%),
-      var(--bg);
-  }
-  .elegant-border{
-    border: 1px solid color-mix(in srgb, var(--border) 20%, transparent);
-  }
+    .wedding-gradient {
+      background:
+        radial-gradient(1200px 600px at 50% 120%, rgba(0, 0, 0, .04), transparent 60%),
+        radial-gradient(800px 400px at 60% -10%, rgba(0, 0, 0, .03), transparent 55%),
+        var(--bg);
+    }
+
+    .elegant-border {
+      border: 1px solid color-mix(in srgb, var(--border) 20%, transparent);
+    }
   </style>
 </head>
 
@@ -302,7 +325,7 @@ html, body { width:100%; overflow-x:hidden; overscroll-behavior-x: none; }
                     </div>
                     <div class="p-3 sm:p-0">
                       <h5 class="font-medium text-foreground mb-2">Contacto</h5>
-                      <p>Para consultas: +54 9 11 XXXX-XXXX</p>
+                      <p>Para consultas: +54 9 11 3684-6005</p>
                     </div>
                     <div class="p-3 sm:p-0">
                       <h5 class="font-medium text-foreground mb-2">Regalo</h5>
@@ -430,7 +453,8 @@ html, body { width:100%; overflow-x:hidden; overscroll-behavior-x: none; }
                 </div>
 
                 <!-- NUEVO FORM -->
-                <form action="enviar.php" method="POST" id="rsvpForm" class="space-y-5 sm:space-y-6 animate-fade-in" style="animation-delay:.2s">
+                <form action="enviar.php" method="POST" id="rsvpForm" class="space-y-5 sm:space-y-6 animate-fade-in"
+                  style="animation-delay:.2s">
                   <div id="invitados" class="space-y-6">
                     <div class="invitado bg-muted/40 rounded-xl p-4 sm:p-5 elegant-border">
                       <h4 class="font-serif text-lg font-medium mb-4">Invitado <span class="inv-num">1</span></h4>
@@ -477,214 +501,427 @@ html, body { width:100%; overflow-x:hidden; overscroll-behavior-x: none; }
                       placeholder="+54 9 11 XXXX-XXXX">
                   </div>
 
-                  <!-- === REGALOS (carousel de selección única) === -->
-<!-- === REGALOS (carousel de selección única) === -->
-<div class="mt-6">
-  <label class="block text-sm font-medium text-foreground mb-3">Regalos:</label>
+                  <div class="mt-6">
+                    <label class="block text-sm font-medium text-foreground mb-3">Regalos:</label>
 
-  <div class="relative">
-    <!-- Flechas (solo desktop) -->
-    <button type="button" id="giftPrev"
-      class="hidden md:inline-flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2
+                    <div class="relative">
+                      <!-- Flechas (solo desktop) -->
+                      <button type="button" id="giftPrev" class="hidden md:inline-flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2
              items-center justify-center w-9 h-9 rounded-full bg-background/80 border border-border
-             hover:bg-background shadow-sm z-10"
-      aria-label="Anterior">
-      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-      </svg>
-    </button>
+             hover:bg-background shadow-sm z-10" aria-label="Anterior">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                        </svg>
+                      </button>
 
-<div id="giftCarousel" class="flex gap-4 overflow-x-auto pb-2 px-1 [scrollbar-width:none] [-ms-overflow-style:none]" style="scrollbar-width:none">
+                      <div id="giftCarousel"
+                        class="flex gap-4 overflow-x-auto pb-2 px-1 [scrollbar-width:none] [-ms-overflow-style:none]"
+                        style="scrollbar-width:none">
 
 
-      <!-- Repite para cada excursión -->
-      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
-        <input type="radio" name="regalo" value="Ceremonia del té en Kioto con kimono" class="peer absolute opacity-0 pointer-events-none" tabindex="-1" required>
-        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                        <!-- Repite para cada excursión -->
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Ceremonia del té en Kioto con kimono"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1" required>
+                          <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
                     ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
-          <img src="ceremonia_del_te.webp" alt="Ceremonia del té en Kioto con kimono" class="w-full h-full object-cover">
-        </div>
-        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Ceremonia del té</span>
-      </label>
+                            <img src="ceremonia_del_te.webp" alt="Ceremonia del té en Kioto con kimono"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Ceremonia del té</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$90.000</span>
+                        </label>
 
-      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
-        <input type="radio" name="regalo" value="Clase privada de sushi en Tokio" class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
-        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Clase privada de sushi en Tokio"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
                     ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
-          <img src="sushi.webp" alt="Clase privada de sushi en Tokio" class="w-full h-full object-cover">
-        </div>
-        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Clase de sushi</span>
-      </label>
+                            <img src="sushi.webp" alt="Clase privada de sushi en Tokio"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Clase de sushi</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$150.000</span>
+                        </label>
 
-      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
-        <input type="radio" name="regalo" value="Alquiler de kimonos + paseo en Gion" class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
-        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Alquiler de kimonos + paseo en Gion"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
                     ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
-          <img src="kimono_gion.webp" alt="Alquiler de kimonos + paseo en Gion" class="w-full h-full object-cover">
-        </div>
-        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Gion en kimono</span>
-      </label>
+                            <img src="kimono_gion.webp" alt="Alquiler de kimonos + paseo en Gion"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Gion en kimono</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$120.000</span>
+                        </label>
 
-            <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
-        <input type="radio" name="regalo" value="Alquiler de kimonos + paseo en Gion" class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
-        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Alquiler de kimonos + paseo en Gion"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
                     ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
-          <img src="samurai.webp" alt="Alquiler de kimonos + paseo en Gion" class="w-full h-full object-cover">
-        </div>
-        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Experiencia de samurai</span>
-      </label>
+                            <img src="samurai.webp" alt="Alquiler de kimonos + paseo en Gion"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Experiencia de samurai</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$180.000</span>
+                        </label>
 
-      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
-        <input type="radio" name="regalo" value="Visita al Museo Ghibli en Mitaka" class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
-        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                                                <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Alquiler de kimonos + paseo en Gion"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
                     ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
-          <img src="fushimi.webp" alt="Visita al Museo Ghibli en Mitaka" class="w-full h-full object-cover">
-        </div>
-        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Excursión Nara + Fushimi Inari</span>
-      </label>
+                            <img src="caligrafia.webp" alt="Alquiler de kimonos + paseo en Gion"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Clase de caligrafía japonesa y origami</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$100.000</span>
+                        </label>
 
-      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
-        <input type="radio" name="regalo" value="Tour templos de Kioto" class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
-        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Visita al Museo Ghibli en Mitaka"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
                     ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
-          <img src="templos.webp" alt="Tour templos de Kioto" class="w-full h-full object-cover">
-        </div>
-        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Tour templos de Kioto</span>
-      </label>
+                            <img src="fushimi.webp" alt="Visita al Museo Ghibli en Mitaka"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Excursión Nara + Fushimi
+                            Inari</span>
+                            <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$180.000</span>
+                        </label>
 
-      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
-        <input type="radio" name="regalo" value="Excursión a Nikko desde Tokio" class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
-        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Tour templos de Kioto"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
                     ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
-          <img src="nikko.webp" alt="Excursión a Nikko desde Tokio" class="w-full h-full object-cover">
-        </div>
-        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Excursión a Nikko desde Tokio</span>
-      </label>
+                            <img src="templos.webp" alt="Tour templos de Kioto" class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Tour templos de Kioto</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$200.000</span>
+                        </label>
 
-      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
-        <input type="radio" name="regalo" value="Hiroshima y Miyajima" class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
-        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Excursión a Nikko desde Tokio"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
                     ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
-          <img src="hiroshima.webp" alt="Hiroshima y Miyajima" class="w-full h-full object-cover">
-        </div>
-        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Hiroshima y Miyajima</span>
-      </label>
+                            <img src="nikko.webp" alt="Excursión a Nikko desde Tokio"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Excursión a Nikko desde
+                            Tokio</span>
+                            <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$120.000</span>
+                        </label>
 
-      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
-        <input type="radio" name="regalo" value="Tour privado Monte Fuji y Lago Ashi" class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
-        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Hiroshima y Miyajima"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
                     ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
-          <img src="fuji.webp" alt="Tour privado Monte Fuji y Lago Ashi" class="w-full h-full object-cover">
-        </div>
-        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Tour privado Monte Fuji y Lago Ashi</span>
-      </label>
+                            <img src="hiroshima.webp" alt="Hiroshima y Miyajima" class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Hiroshima y Miyajima</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$240.000</span>
+                        </label>
 
-      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
-        <input type="radio" name="regalo" value="Rickshaw en Arashiyama + bosque de bambú" class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
-        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Tour privado Monte Fuji y Lago Ashi"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
                     ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
-          <img src="arashiyama.webp" alt="Rickshaw en Arashiyama + bosque de bambú" class="w-full h-full object-cover">
-        </div>
-        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Rickshaw en Arashiyama</span>
-      </label>
+                            <img src="fuji.webp" alt="Tour privado Monte Fuji y Lago Ashi"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Tour privado Monte Fuji y Lago
+                            Ashi</span>
+                            <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$300.000</span>
+                        </label>
 
-      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
-        <input type="radio" name="regalo" value="Crucero nocturno bahía de Tokio" class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
-        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Rickshaw en Arashiyama + bosque de bambú"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
                     ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
-          <img src="crucero.webp" alt="Crucero nocturno bahía de Tokio" class="w-full h-full object-cover">
-        </div>
-        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Crucero nocturno Tokio</span>
-      </label>
+                            <img src="arashiyama.webp" alt="Rickshaw en Arashiyama + bosque de bambú"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Rickshaw en Arashiyama</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$200.000</span>
+                        </label>
 
-      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
-        <input type="radio" name="regalo" value="Excursión Hanami o Momiji" class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
-        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Crucero nocturno bahía de Tokio"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
                     ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
-          <img src="hanami.webp" alt="Excursión Hanami o Momiji" class="w-full h-full object-cover">
-        </div>
-        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Excursión Hanami o Momiji</span>
-      </label>
+                            <img src="crucero.webp" alt="Crucero nocturno bahía de Tokio"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Crucero nocturno Tokio</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$220.000</span>
+                        </label>
 
-      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
-        <input type="radio" name="regalo" value="Senderismo Takayama y Shirakawa-go" class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
-        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Excursión Hanami o Momiji"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
                     ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
-          <img src="takayama.webp" alt="Senderismo Takayama y Shirakawa-go" class="w-full h-full object-cover">
-        </div>
-        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Senderismo Takayama y Shirakawa-go</span>
-      </label>
+                            <img src="hanami.webp" alt="Excursión Hanami o Momiji" class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Excursión Hanami o
+                            Momiji</span>
+                            <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$150.000</span>
+                        </label>
 
-      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
-        <input type="radio" name="regalo" value="Paseo en barco por el río Hozugawa" class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
-        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Senderismo Takayama y Shirakawa-go"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
                     ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
-          <img src="hozugawa.webp" alt="Paseo en barco por el río Hozugawa" class="w-full h-full object-cover">
-        </div>
-        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Barco río Hozugawa</span>
-      </label>
+                            <img src="takayama.webp" alt="Senderismo Takayama y Shirakawa-go"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Senderismo Takayama y
+                            Shirakawa-go</span>
+                            <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$250.000</span>
+                        </label>
 
-      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
-        <input type="radio" name="regalo" value="Noche en ryokan con onsen en Hakone" class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
-        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Paseo en barco por el río Hozugawa"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
                     ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
-          <img src="ryokan.webp" alt="Noche en ryokan con onsen en Hakone" class="w-full h-full object-cover">
-        </div>
-        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Noche en Ryokan con onsen Hakone</span>
-      </label>
+                            <img src="hozugawa.webp" alt="Paseo en barco por el río Hozugawa"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Barco río Hozugawa</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$140.000</span>
+                        </label>
 
-      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
-        <input type="radio" name="regalo" value="Cena kaiseki gourmet en Kioto" class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
-        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Noche en ryokan con onsen en Hakone"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
                     ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
-          <img src="kaiseki.webp" alt="Cena kaiseki gourmet en Kioto" class="w-full h-full object-cover">
-        </div>
-        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Cena kaiseki en Kioto</span>
-      </label>
+                            <img src="ryokan.webp" alt="Noche en ryokan con onsen en Hakone"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Noche en Ryokan con onsen
+                            Hakone</span>
+                            <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$270.000</span>
+                        </label>
 
-      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
-        <input type="radio" name="regalo" value="Experiencia sumo" class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
-        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Cena kaiseki gourmet en Kioto"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
                     ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
-          <img src="sumo.webp" alt="Experiencia sumo" class="w-full h-full object-cover">
-        </div>
-        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Experiencia sumo</span>
-      </label>
+                            <img src="kaiseki.webp" alt="Cena kaiseki gourmet en Kioto"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Cena kaiseki en Kioto</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$200.000</span>
+                        </label>
 
-      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
-        <input type="radio" name="regalo" value="Tour nocturno izakayas en Shinjuku" class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
-        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Experiencia sumo"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
                     ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
-          <img src="shinjunku.webp" alt="Tour nocturno izakayas en Shinjuku" class="w-full h-full object-cover">
-        </div>
-        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Tour nocturno izakayas en Shinjuku</span>
-      </label>
+                            <img src="sumo.webp" alt="Experiencia sumo" class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Experiencia sumo</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$220.000</span>
+                        </label>
 
-      <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
-        <input type="radio" name="regalo" value="Visita al Museo Ghibli en Mitaka" class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
-        <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Tour nocturno izakayas en Shinjuku"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
                     ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
-          <img src="ghibli.webp" alt="Visita al Museo Ghibli en Mitaka" class="w-full h-full object-cover">
-        </div>
-        <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Museo Ghibli en Mitaka</span>
-      </label>
-      
-    </div>
+                            <img src="shinjunku.webp" alt="Tour nocturno izakayas en Shinjuku"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Tour nocturno izakayas en
+                            Shinjuku</span>
+                            <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$160.000</span>
+                        </label>
 
-    <button type="button" id="giftNext"
-      class="hidden md:inline-flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Visita al Museo Ghibli en Mitaka"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
+                    ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+                            <img src="ghibli.webp" alt="Visita al Museo Ghibli en Mitaka"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Museo Ghibli en Mitaka</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$100.000</span>
+                        </label>
+
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Experiencia privada de geishas en Kioto"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div
+                            class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+                            <img src="geishas.webp" alt="Experiencia privada de geishas en Kioto"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Geishas en Kioto</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$400.000</span>
+                        </label>
+
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Curso de cocina kaiseki con chef Michelin"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div
+                            class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+                            <img src="kaiseki_chef.webp" alt="Curso de cocina kaiseki con chef Michelin"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Cocina kaiseki Michelin</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$500.000</span>
+                        </label>
+
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Sesión fotográfica privada en templos históricos"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div
+                            class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+                            <img src="sesion_foto.webp" alt="Sesión fotográfica privada en templos históricos"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Sesión fotográfica
+                            templos</span>
+                            <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$450.000</span>
+                        </label>
+
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Tour en helicóptero Tokio + Monte Fuji"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div
+                            class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+                            <img src="helicoptero_fuji.webp" alt="Tour en helicóptero Tokio + Monte Fuji"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Helicóptero por Tokio + Fuji</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$700.000</span>
+                        </label>
+
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Viaje en Shinkansen Gran Class"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div
+                            class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+                            <img src="shinkansen.webp" alt="Viaje en Shinkansen Gran Class"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Viaje en Shinkansen Gran Class</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$450.000</span>
+                        </label>
+
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Excursión privada en coche de lujo por Kioto y Nara"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div
+                            class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+                            <img src="coche_lujo.webp" alt="Excursión privada en coche de lujo por Kioto y Nara"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Coche de lujo Kioto y Nara</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$500.000</span>
+                        </label>
+
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Estadía en ryokan de lujo con onsen privado"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div
+                            class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+                            <img src="ryokan_privado.webp" alt="Estadía en ryokan de lujo con onsen privado"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Ryokan de lujo con onsen</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$800.000</span>
+                        </label>
+
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Glamping de lujo en el Monte Fuji"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div
+                            class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+                            <img src="glamping_fuji.webp" alt="Glamping de lujo en el Monte Fuji"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Glamping Monte Fuji</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$600.000</span>
+                        </label>
+
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Asientos VIP para torneo de sumo en Tokio"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div
+                            class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+                            <img src="sumo_vip.webp" alt="Asientos VIP para torneo de sumo en Tokio"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Sumo VIP Tokio</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$400.000</span>
+                        </label>
+
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Crucero de lujo por el mar interior de Seto"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div
+                            class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+                            <img src="crucero_seto.webp" alt="Crucero de lujo por el mar interior de Seto"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Crucero de lujo por Seto</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$1.000.000</span>
+                        </label>
+
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Sorteo: Madrina o Padrino de nuestro hijo"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div
+                            class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+                            <img src="sorteo_madrina_padrino.webp" alt="Sorteo: Madrina o Padrino de nuestro hijo"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Sorteo: Madrina/Padrino</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$1.500.000</span>
+                        </label>
+
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                          <input type="radio" name="regalo" value="Sorteo: Elegir el nombre de nuestro hijo"
+                            class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
+                          <div
+                            class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted ring-2 ring-transparent peer-checked:ring-primary transition-shadow">
+                            <img src="sorteo_nombre_hijo.webp" alt="Sorteo: Elegir el nombre de nuestro hijo"
+                              class="w-full h-full object-cover">
+                          </div>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Sorteo: Nombre del hijo</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$2.500.000</span>
+                        </label>
+                      </div>
+
+                      <button type="button" id="giftNext" class="hidden md:inline-flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2
              items-center justify-center w-9 h-9 rounded-full bg-background/80 border border-border
-             hover:bg-background shadow-sm z-10"
-      aria-label="Siguiente">
-      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-      </svg>
-    </button>
-  </div>
+             hover:bg-background shadow-sm z-10" aria-label="Siguiente">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
 
-  <p class="text-xs text-foreground/60 mt-2">Elegí una sola excursión (podés cambiarla antes de enviar).</p>
-</div>
-<!-- === /REGALOS === -->
+                    <p class="text-xs text-foreground/60 mt-2">Elegí una sola excursión (podés cambiarla antes de
+                      enviar).</p>
+                  </div>
+                  <!-- === /REGALOS === -->
 
 
                   <div>
@@ -705,8 +942,8 @@ html, body { width:100%; overflow-x:hidden; overscroll-behavior-x: none; }
                 <div class="mt-8 md:mt-12 p-4 sm:p-6 bg-muted rounded-xl text-center animate-fade-in"
                   style="animation-delay:.4s">
                   <p class="text-foreground/70 text-sm sm:text-base">¿Tenés alguna pregunta? Contactanos al <a
-                      href="tel:+5491123456789" class="text-primary hover:text-primary/80 transition-colors">+54 9 11
-                      XXXX-XXXX</a></p>
+                      href="tel:+5491123456789" class="text-primary hover:text-primary/80 transition-colors">+54 9
+                      11 3684-6005</a></p>
                 </div>
               </div>
             </section>
@@ -906,68 +1143,68 @@ html, body { width:100%; overflow-x:hidden; overscroll-behavior-x: none; }
       });
     }
 
-  const giftCarousel = document.getElementById('giftCarousel');
+    const giftCarousel = document.getElementById('giftCarousel');
 
-  // Marcar el radio sin permitir que el navegador haga scroll implícito
-  giftCarousel?.addEventListener('click', (e) => {
-    const label = e.target.closest('label');
-    if (!label || !giftCarousel.contains(label)) return;
+    // Marcar el radio sin permitir que el navegador haga scroll implícito
+    giftCarousel?.addEventListener('click', (e) => {
+      const label = e.target.closest('label');
+      if (!label || !giftCarousel.contains(label)) return;
 
-    e.preventDefault();                           // evita scrollIntoView/snap implícito
-    const input = label.querySelector('input[type="radio"]');
-    if (input) {
-      input.checked = true;                       // seleccionamos manualmente
-      // feedback visual ya lo da .peer-checked:ring-primary
-    }
-  });
-
-  // Flechas (si las usás) siguen iguales
-  document.getElementById('giftPrev')?.addEventListener('click', () =>
-    giftCarousel.scrollBy({ left: -240, behavior: 'smooth' })
-  );
-  document.getElementById('giftNext')?.addEventListener('click', () =>
-    giftCarousel.scrollBy({ left:  240, behavior: 'smooth' })
-  );
-
-
-  /* -------- Evitar múltiples envíos del formulario -------- */
-(function () {
-  const form = document.getElementById('rsvpForm');
-  if (!form) return;
-
-  const submitBtn = form.querySelector("button[type='submit']");
-  let isSubmitting = false;
-
-  form.addEventListener('submit', function (event) {
-    // Si ya se está enviando, bloqueamos el doble submit
-    if (isSubmitting) {
-      event.preventDefault();
-      return;
-    }
-    isSubmitting = true;
-
-    // Deshabilitar botón y dar feedback
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.dataset.originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Enviando...';
-      submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
-      submitBtn.setAttribute('aria-busy', 'true');
-    }
-
-    // Fallback: si seguimos en la misma página (error servidor/validación),
-    // reactivar el botón a los 15s para no “romper” la UI.
-    setTimeout(() => {
-      if (!document.hidden && submitBtn && isSubmitting) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = submitBtn.dataset.originalText || 'Confirmar Asistencia';
-        submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
-        submitBtn.removeAttribute('aria-busy');
-        isSubmitting = false;
+      e.preventDefault();                           // evita scrollIntoView/snap implícito
+      const input = label.querySelector('input[type="radio"]');
+      if (input) {
+        input.checked = true;                       // seleccionamos manualmente
+        // feedback visual ya lo da .peer-checked:ring-primary
       }
-    }, 15000);
-  });
-})();
+    });
+
+    // Flechas (si las usás) siguen iguales
+    document.getElementById('giftPrev')?.addEventListener('click', () =>
+      giftCarousel.scrollBy({ left: -240, behavior: 'smooth' })
+    );
+    document.getElementById('giftNext')?.addEventListener('click', () =>
+      giftCarousel.scrollBy({ left: 240, behavior: 'smooth' })
+    );
+
+
+    /* -------- Evitar múltiples envíos del formulario -------- */
+    (function () {
+      const form = document.getElementById('rsvpForm');
+      if (!form) return;
+
+      const submitBtn = form.querySelector("button[type='submit']");
+      let isSubmitting = false;
+
+      form.addEventListener('submit', function (event) {
+        // Si ya se está enviando, bloqueamos el doble submit
+        if (isSubmitting) {
+          event.preventDefault();
+          return;
+        }
+        isSubmitting = true;
+
+        // Deshabilitar botón y dar feedback
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.dataset.originalText = submitBtn.textContent;
+          submitBtn.textContent = 'Enviando...';
+          submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+          submitBtn.setAttribute('aria-busy', 'true');
+        }
+
+        // Fallback: si seguimos en la misma página (error servidor/validación),
+        // reactivar el botón a los 15s para no “romper” la UI.
+        setTimeout(() => {
+          if (!document.hidden && submitBtn && isSubmitting) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = submitBtn.dataset.originalText || 'Confirmar Asistencia';
+            submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+            submitBtn.removeAttribute('aria-busy');
+            isSubmitting = false;
+          }
+        }, 15000);
+      });
+    })();
 
   </script>
 </body>
