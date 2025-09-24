@@ -187,11 +187,11 @@
                 <div class="hidden md:flex items-center space-x-6">
                   <button class="text-foreground/60 hover:text-primary transition-colors text-sm font-medium"
                     data-scroll-to="#details">Detalles</button>
-                  <button class="text-foreground/60 hover:text-primary transition-colors text-sm font-medium"
-                    data-scroll-to="#location">Ubicación</button>
-                  <button
-                    class="bg-primary/10 hover:bg-primary hover:text-primary-foreground text-primary px-4 py-2 rounded-full text-sm font-medium transition-all duration-300"
-                    data-scroll-to="#rsvp">Confirmar</button>
+                    <button
+                      class="px-6 py-3 border border-foreground/60 text-sm sm:text-base font-medium text-foreground hover:bg-foreground hover:text-background transition-colors"
+                      data-scroll-to="#rsvp">
+                      RSVP
+                    </button>
                 </div>
 
                 <!-- Mobile toggle -->
@@ -209,10 +209,8 @@
                 <div class="flex flex-col gap-2 border-t border-border/30 pt-3">
                   <button class="text-left py-2 px-1 text-foreground/80 hover:text-primary transition-colors"
                     data-scroll-to="#details">Detalles</button>
-                  <button class="text-left py-2 px-1 text-foreground/80 hover:text-primary transition-colors"
-                    data-scroll-to="#location">Ubicación</button>
                   <button class="text-left py-2 px-1 text-primary hover:text-primary/80 transition-colors"
-                    data-scroll-to="#rsvp">Confirmar</button>
+                    data-scroll-to="#rsvp">RSVP</button>
                 </div>
               </div>
             </div>
@@ -222,7 +220,7 @@
             <!-- HERO -->
             <!-- CAMBIO: top padding por altura real del header + más padding-bottom -->
             <section id="hero"
-              class="relative min-h-screen flex items-center justify-center wedding-gradient overflow-hidden pt-[var(--header-h)] pb-24 md:pb-32">
+              class="relative min-h-screen flex items-center justify-center wedding-gradient overflow-hidden pt-[var(--header-h)] pb-10 md:pb-20">
               <div class="absolute inset-0 opacity-30">
                 <div class="absolute top-20 left-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-float"></div>
                 <div class="absolute bottom-20 right-10 w-40 h-40 bg-accent/20 rounded-full blur-3xl animate-float"
@@ -240,207 +238,138 @@
                   </div>
                 </div>
 
+                <!-- Después: el subrayado ocupa el ancho del texto -->
                 <div class="mb-6 md:mb-8 animate-fade-in" style="animation-delay:.3s">
-                  <h1
-                    class="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold text-foreground mb-4 tracking-wide leading-tight">
-                    CARI Y JULI</h1>
-                  <div class="w-16 sm:w-24 h-px bg-primary mx-auto"></div>
+                  <div class="inline-block text-center">
+                    <h1
+                      class="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold text-foreground tracking-wide leading-tight">
+                      CARI Y JULI
+                    </h1>
+                    <div class="h-[2px] bg-primary mt-1 w-full"></div>
+                  </div>
                 </div>
 
+
                 <div class="mb-8 md:mb-12 animate-fade-in" style="animation-delay:.6s">
-                  <p class="font-serif text-lg sm:text-xl md:text-2xl text-foreground/80 mb-3 md:mb-4">Jardín Japonés,
-                    Buenos Aires</p>
+                  <p class="font-serif text-xl sm:text-2xl md:text-3xl text-foreground/80 md:mb-2">
+                    Jardín Japonés, Buenos Aires
+                  </p>
+
                   <p class="font-sans text-base sm:text-lg md:text-xl text-foreground/70">19 de Noviembre, 2025 • 14:00
                     HRS</p>
                 </div>
 
                 <div class="animate-fade-in" style="animation-delay:.9s">
-                  <button
-                    class="bg-primary hover:bg-primary/90 text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-base sm:text-lg transition-all duration-300 floral-shadow hover:shadow-xl transform hover:scale-105 min-h-[48px] min-w-[200px]"
-                    data-scroll-to="#rsvp">Confirmar Asistencia</button>
+                  <div class="flex items-center justify-center gap-3">
+                    <button
+                      class="px-6 py-3 border border-foreground/60 text-sm sm:text-base font-medium text-foreground hover:bg-foreground hover:text-background transition-colors"
+                      data-scroll-to="#rsvp">
+                      RSVP
+                    </button>
+                    <!-- Si más adelante activás “Regalá”, acá podés sumar otro botón -->
+                  </div>
                 </div>
+                <div class="mt-6 text-center select-none">
+                  <div class="text-[11px] tracking-[0.12em] text-foreground/70 uppercase">Deslizá</div>
+                  <svg class="w-4 h-4 mx-auto mt-1 animate-bounce" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+
               </div>
             </section>
+
+            <!-- BOX BLANCO BAJO EL HERO -->
+<section id="intro" class="bg-card">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 text-center">
+    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground">¡Nos Casamos!</h2>
+    <p class="mt-2 text-foreground/70 text-sm sm:text-base">Y queremos compartir este día con vos.</p>
+  </div>
+</section>
+
 
             <!-- DETALLES -->
-            <section id="details" class="py-16 md:py-20 lg:py-32 bg-card scroll-mt-[var(--header-h)]">
-              <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12 md:mb-16">
-                  <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-foreground mb-4">Detalles del
-                    Evento</h2>
-                  <div class="w-12 sm:w-16 h-px bg-primary mx-auto"></div>
-                </div>
+<section id="details" class="py-14 md:py-20 bg-background scroll-mt-[var(--header-h)]">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-12 items-start lg:items-center">
+      <!-- IZQUIERDA: ¿Venís?  (en mobile aparece primero) -->
+      <div class="order-1 flex flex-col items-center text-center lg:items-start lg:text-left lg:h-full lg:justify-center">
+        <h3 class="font-serif text-3xl sm:text-4xl font-semibold text-foreground">¿Venís?</h3>
+        <p class="mt-3 text-foreground/70 max-w-md">
+          Para una mejor organización, es muy importante que nos ayudes confirmando tu asistencia:
+        </p>
+        <button
+          class="mt-5 inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-medium"
+          data-scroll-to="#rsvp">
+          RSVP
+        </button>
+      </div>
 
-                <div class="space-y-8 md:space-y-0 md:grid md:grid-cols-2 md:gap-8 lg:gap-16">
-                  <div class="text-center animate-fade-in">
-                    <div class="mb-6">
-                      <div
-                        class="w-14 h-14 sm:w-16 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-7 h-7 sm:w-8 sm:h-8 text-primary" fill="none" stroke="currentColor"
-                          viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                          </path>
-                        </svg>
-                      </div>
-                      <h3 class="font-serif text-xl sm:text-2xl font-medium text-foreground mb-2">Ceremonia</h3>
-                      <p class="text-foreground/70 mb-4 text-lg sm:text-base">14:00 HRS</p>
-                      <p class="text-foreground/60 text-sm sm:text-base leading-relaxed max-w-sm mx-auto">Nos
-                        encontramos para celebrar el inicio de nuestro camino juntos en una ceremonia íntima rodeados de
-                        nuestros seres queridos.</p>
-                    </div>
-                  </div>
-
-                  <div class="text-center animate-fade-in" style="animation-delay:.2s">
-                    <div class="mb-6">
-                      <div
-                        class="w-14 h-14 sm:w-16 sm:h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-7 h-7 sm:w-8 sm:h-8 text-accent" fill="none" stroke="currentColor"
-                          viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3">
-                          </path>
-                        </svg>
-                      </div>
-                      <h3 class="font-serif text-xl sm:text-2xl font-medium text-foreground mb-2">Celebración</h3>
-                      <p class="text-foreground/70 mb-4 text-lg sm:text-base">15:00 HRS</p>
-                      <p class="text-foreground/60 text-sm sm:text-base leading-relaxed max-w-sm mx-auto">Después de la
-                        ceremonia, los invitamos a compartir una velada especial con música, baile y un delicioso
-                        almuerzo.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="mt-12 md:mt-16 p-6 md:p-8 bg-muted rounded-2xl animate-fade-in" style="animation-delay:.4s">
-                  <h4 class="font-serif text-lg sm:text-xl font-medium text-foreground mb-6 text-center">Información
-                    Importante</h4>
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 text-sm sm:text-base text-foreground/70">
-                    <div class="p-3 sm:p-0">
-                      <h5 class="font-medium text-foreground mb-2">Dress Code</h5>
-                      <p>Formal / Elegante</p>
-                    </div>
-                    <div class="p-3 sm:p-0">
-                      <h5 class="font-medium text-foreground mb-2">Estacionamiento</h5>
-                      <p>Disponible en el lugar</p>
-                    </div>
-                    <div class="p-3 sm:p-0">
-                      <h5 class="font-medium text-foreground mb-2">Contacto</h5>
-                      <p>Para consultas: +54 9 11 3684-6005</p>
-                    </div>
-                    <div class="p-3 sm:p-0">
-                      <h5 class="font-medium text-foreground mb-2">Regalo</h5>
-                      <p>Su presencia es nuestro regalo</p>
-                    </div>
-                  </div>
-                </div>
+      <!-- DERECHA: LISTA DE EVENTOS -->
+      <div class="order-2">
+        <div class="bg-card rounded-xl border border-border/20 overflow-hidden">
+          <!-- ITEM: CIVIL -->
+          <div class="flex items-start gap-4 p-5 sm:p-6 border-b border-border/10">
+            <div class="shrink-0 mt-1">
+              <!-- anillos -->
+              <svg class="w-7 h-7 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="9" cy="12" r="5" stroke-width="2"></circle>
+                <circle cx="15" cy="12" r="5" stroke-width="2"></circle>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h4 class="font-sans font-bold tracking-wide text-sm text-foreground uppercase">Civil</h4>
+              <div class="mt-1 text-foreground/80 text-sm leading-6">
+                <div><span class="font-medium">Fecha:</span> —</div>
+                <div><span class="font-medium">Hora:</span> —</div>
+                <div><span class="font-medium">Ubicación:</span> —</div>
               </div>
-            </section>
+            </div>
+          </div>
 
-            <!-- UBICACIÓN -->
-            <section id="location" class="py-16 md:py-20 lg:py-32 wedding-gradient scroll-mt-[var(--header-h)]">
-              <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12 md:mb-16 animate-fade-in">
-                  <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-foreground mb-4">Ubicación
-                  </h2>
-                  <div class="w-12 sm:w-16 h-px bg-primary mx-auto"></div>
-                </div>
-
-                <div class="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
-                  <div class="animate-fade-in">
-                    <h3
-                      class="font-serif text-xl sm:text-2xl font-medium text-foreground mb-4 sm:mb-6 text-center lg:text-left">
-                      CABA, Buenos Aires</h3>
-                    <div class="space-y-4 sm:space-y-6">
-                      <div class="flex items-start space-x-3 sm:space-x-4">
-                        <div
-                          class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
-                            </path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                          </svg>
-                        </div>
-                        <div class="flex-1 min-w-0">
-                          <h4 class="font-medium text-foreground mb-1 text-sm sm:text-base">Dirección</h4>
-                          <p class="text-foreground/70 text-sm sm:text-base">Av. Casares y Av. Libertador<br>CABA,
-                            Buenos Aires</p>
-                        </div>
-                      </div>
-
-                      <div class="flex items-start space-x-3 sm:space-x-4">
-                        <div
-                          class="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                          <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                          </svg>
-                        </div>
-                        <div class="flex-1 min-w-0">
-                          <h4 class="font-medium text-foreground mb-1 text-sm sm:text-base">Horario</h4>
-                          <p class="text-foreground/70 text-sm sm:text-base">19 de Noviembre, 2025<br>14:00 HRS</p>
-                        </div>
-                      </div>
-
-                      <div class="flex items-start space-x-3 sm:space-x-4">
-                        <div
-                          class="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                          <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM21 17a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M7 17h10l4-4V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8l4 4z"></path>
-                          </svg>
-                        </div>
-                        <div class="flex-1 min-w-0">
-                          <h4 class="font-medium text-foreground mb-1 text-sm sm:text-base">Transporte</h4>
-                          <p class="text-foreground/70 text-sm sm:text-base">Fácil acceso en auto<br>Estacionamiento
-                            disponible</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="mt-6 sm:mt-8 text-center lg:text-left">
-                      <button id="btnMaps"
-                        class="inline-flex items-center justify-center space-x-2 bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-lg font-medium transition-all duration-300 floral-shadow min-h-[48px] w-full sm:w-auto">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
-                          </path>
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                        <span>Ver en Google Maps</span>
-                      </button>
-                    </div>
-                  </div>
-
-                  <div class="animate-fade-in" style="animation-delay:.2s">
-                    <div
-                      class="bg-muted rounded-2xl p-6 sm:p-8 h-64 sm:h-80 flex items-center justify-center elegant-border">
-                      <div class="text-center max-w-xs mx-auto">
-                        <div
-                          class="w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                          <svg class="w-6 h-6 sm:w-8 sm:h-8 text-primary" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7">
-                            </path>
-                          </svg>
-                        </div>
-                        <h4 class="font-serif text-lg sm:text-xl font-medium text-foreground mb-2">Mapa Interactivo</h4>
-                        <iframe class="block mx-auto w-[200px] h-[200px] md:w-[350px] md:h-[200px]"
-                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.0983121207946!2d-58.410157930879535!3d-34.5763788778627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb57a4147c5c7%3A0xfc930bf72fdf871f!2zSmFyZMOtbiBKYXBvbsOpcw!5e0!3m2!1ses-419!2sar!4v1758209088832!5m2!1ses-419!2sar"
-                          style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                          title="Mapa Jardín Japonés">
-                        </iframe>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          <!-- ITEM: CEREMONIA -->
+          <div class="flex items-start gap-4 p-5 sm:p-6 border-b border-border/10">
+            <div class="shrink-0 mt-1">
+              <!-- corazón -->
+              <svg class="w-7 h-7 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h4 class="font-sans font-bold tracking-wide text-sm text-foreground uppercase">Ceremonia</h4>
+              <div class="mt-1 text-foreground/80 text-sm leading-6">
+                <div><span class="font-medium">Fecha:</span> 19 de Noviembre, 2025</div>
+                <div><span class="font-medium">Hora:</span> 14:00 HRS</div>
+                <div><span class="font-medium">Ubicación:</span> Jardín Japonés, Buenos Aires</div>
               </div>
-            </section>
+            </div>
+          </div>
+
+          <!-- ITEM: RECEPCIÓN & FIESTA -->
+          <div class="flex items-start gap-4 p-5 sm:p-6">
+            <div class="shrink-0 mt-1">
+              <!-- copa -->
+              <svg class="w-7 h-7 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      d="M7 10h10l1-6H6l1 6zm5 0v7m-4 0h8"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h4 class="font-sans font-bold tracking-wide text-sm text-foreground uppercase">Recepción &amp; Fiesta</h4>
+              <div class="mt-1 text-foreground/80 text-sm leading-6">
+                <div><span class="font-medium">Fecha:</span> 19 de Noviembre, 2025</div>
+                <div><span class="font-medium">Hora:</span> 15:00 HRS</div>
+                <div><span class="font-medium">Ubicación:</span> —</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /DERECHA -->
+    </div>
+  </div>
+</section>
 
             <!-- RSVP -->
             <section id="rsvp" class="py-16 md:py-20 lg:py-32 bg-card scroll-mt-[var(--header-h)]">
@@ -568,7 +497,7 @@
                           <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$180.000</span>
                         </label>
 
-                                                <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
+                        <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
                           <input type="radio" name="regalo" value="Alquiler de kimonos + paseo en Gion"
                             class="peer absolute opacity-0 pointer-events-none" tabindex="-1">
                           <div class="rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto overflow-hidden bg-muted
@@ -576,7 +505,8 @@
                             <img src="caligrafia.webp" alt="Alquiler de kimonos + paseo en Gion"
                               class="w-full h-full object-cover">
                           </div>
-                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Clase de caligrafía japonesa y origami</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Clase de caligrafía japonesa y
+                            origami</span>
                           <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$100.000</span>
                         </label>
 
@@ -590,7 +520,7 @@
                           </div>
                           <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Excursión Nara + Fushimi
                             Inari</span>
-                            <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$180.000</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$180.000</span>
                         </label>
 
                         <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
@@ -614,7 +544,7 @@
                           </div>
                           <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Excursión a Nikko desde
                             Tokio</span>
-                            <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$120.000</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$120.000</span>
                         </label>
 
                         <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
@@ -638,7 +568,7 @@
                           </div>
                           <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Tour privado Monte Fuji y Lago
                             Ashi</span>
-                            <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$300.000</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$300.000</span>
                         </label>
 
                         <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
@@ -674,7 +604,7 @@
                           </div>
                           <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Excursión Hanami o
                             Momiji</span>
-                            <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$150.000</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$150.000</span>
                         </label>
 
                         <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
@@ -687,7 +617,7 @@
                           </div>
                           <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Senderismo Takayama y
                             Shirakawa-go</span>
-                            <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$250.000</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$250.000</span>
                         </label>
 
                         <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
@@ -712,7 +642,7 @@
                           </div>
                           <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Noche en Ryokan con onsen
                             Hakone</span>
-                            <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$270.000</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$270.000</span>
                         </label>
 
                         <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
@@ -748,7 +678,7 @@
                           </div>
                           <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Tour nocturno izakayas en
                             Shinjuku</span>
-                            <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$160.000</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$160.000</span>
                         </label>
 
                         <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
@@ -797,7 +727,7 @@
                           </div>
                           <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Sesión fotográfica
                             templos</span>
-                            <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$450.000</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$450.000</span>
                         </label>
 
                         <label class="flex-shrink-0 w-32 sm:w-36 snap-center text-center cursor-pointer select-none">
@@ -808,7 +738,8 @@
                             <img src="helicoptero_fuji.webp" alt="Tour en helicóptero Tokio + Monte Fuji"
                               class="w-full h-full object-cover">
                           </div>
-                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Helicóptero por Tokio + Fuji</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Helicóptero por Tokio +
+                            Fuji</span>
                           <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$700.000</span>
                         </label>
 
@@ -820,7 +751,8 @@
                             <img src="shinkansen.webp" alt="Viaje en Shinkansen Gran Class"
                               class="w-full h-full object-cover">
                           </div>
-                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Viaje en Shinkansen Gran Class</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Viaje en Shinkansen Gran
+                            Class</span>
                           <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$450.000</span>
                         </label>
 
@@ -832,7 +764,8 @@
                             <img src="coche_lujo.webp" alt="Excursión privada en coche de lujo por Kioto y Nara"
                               class="w-full h-full object-cover">
                           </div>
-                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Coche de lujo Kioto y Nara</span>
+                          <span class="mt-2 block text-xs sm:text-sm text-foreground/80">Coche de lujo Kioto y
+                            Nara</span>
                           <span class="mt-2 block text-xs sm:text-sm text-foreground/80">$500.000</span>
                         </label>
 
@@ -950,46 +883,46 @@
           </main>
 
           <!-- FOOTER -->
-          <footer class="bg-foreground text-background py-12 md:py-16">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div class="text-center mb-6 md:mb-8">
-                <svg class="w-12 h-6 sm:w-16 sm:h-8 mx-auto opacity-60" viewBox="0 0 64 32" fill="none">
-                  <ellipse cx="20" cy="16" rx="4" ry="3" fill="currentColor" opacity=".7"></ellipse>
-                  <ellipse cx="32" cy="12" rx="5" ry="4" fill="currentColor" opacity=".8"></ellipse>
-                  <ellipse cx="44" cy="16" rx="4" ry="3" fill="currentColor" opacity=".7"></ellipse>
-                  <path d="M16 16C16 16 20 20 24 18" stroke="currentColor" stroke-width="1" fill="none" opacity=".6">
-                  </path>
-                  <path d="M28 12C28 12 32 16 36 14" stroke="currentColor" stroke-width="1" fill="none" opacity=".6">
-                  </path>
-                  <path d="M40 16C40 16 44 20 48 18" stroke="currentColor" stroke-width="1" fill="none" opacity=".6">
-                  </path>
-                </svg>
-              </div>
+<!-- FOOTER -->
+<footer class="bg-background text-foreground py-12 md:py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-6 md:mb-8">
+      <svg class="w-12 h-6 sm:w-16 sm:h-8 mx-auto opacity-60" viewBox="0 0 64 32" fill="none">
+        <ellipse cx="20" cy="16" rx="4" ry="3" fill="currentColor" opacity=".7"></ellipse>
+        <ellipse cx="32" cy="12" rx="5" ry="4" fill="currentColor" opacity=".8"></ellipse>
+        <ellipse cx="44" cy="16" rx="4" ry="3" fill="currentColor" opacity=".7"></ellipse>
+        <path d="M16 16C16 16 20 20 24 18" stroke="currentColor" stroke-width="1" fill="none" opacity=".6"></path>
+        <path d="M28 12C28 12 32 16 36 14" stroke="currentColor" stroke-width="1" fill="none" opacity=".6"></path>
+        <path d="M40 16C40 16 44 20 48 18" stroke="currentColor" stroke-width="1" fill="none" opacity=".6"></path>
+      </svg>
+    </div>
 
-              <div class="text-center mb-6 md:mb-8">
-                <h3 class="font-serif text-xl sm:text-2xl md:text-3xl font-medium mb-3 sm:mb-4">Cari y Juli</h3>
-                <p class="text-background/80 text-base sm:text-lg mb-2">22 de Noviembre, 2025</p>
-                <p class="text-background/70 text-sm sm:text-base">San Isidro, Buenos Aires</p>
-              </div>
+    <div class="text-center mb-6 md:mb-8">
+      <h3 class="font-serif text-xl sm:text-2xl md:text-3xl font-medium mb-3 sm:mb-4">Cari y Juli</h3>
+      <p class="text-foreground/80 text-base sm:text-lg mb-2">19 de Noviembre, 2025</p>
+      <p class="text-foreground/70 text-sm sm:text-base">Jardín Japonés, Buenos Aires</p>
+    </div>
 
-              <div class="text-center mb-6 md:mb-8">
-                <p class="text-background/60 text-xs sm:text-sm mb-3">Para consultas, contáctanos:</p>
-                <div class="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
-                  <a href="mailto:boda@ejemplo.com"
-                    class="text-background/80 hover:text-background transition-colors text-sm min-h-[44px] flex items-center">boda@ejemplo.com</a>
-                  <span class="text-background/40 hidden sm:inline">•</span>
-                  <a href="tel:+5491112345678"
-                    class="text-background/80 hover:text-background transition-colors text-sm min-h-[44px] flex items-center">+54
-                    9 11 1234-5678</a>
-                </div>
-              </div>
+    <div class="text-center mb-6 md:mb-8">
+      <p class="text-foreground/60 text-xs sm:text-sm mb-3">Para consultas, contáctanos:</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
+        <a href="mailto:boda@ejemplo.com"
+           class="text-foreground/80 hover:text-foreground transition-colors text-sm min-h-[44px] flex items-center">
+           boda@ejemplo.com</a>
+        <span class="text-foreground/40 hidden sm:inline">•</span>
+        <a href="tel:+5491112345678"
+           class="text-foreground/80 hover:text-foreground transition-colors text-sm min-h-[44px] flex items-center">
+           +54 9 11 3684-6005</a>
+      </div>
+    </div>
 
-              <div class="w-16 sm:w-24 h-px bg-background/20 mx-auto mb-4 sm:mb-6"></div>
-              <div class="text-center">
-                <p class="text-background/50 text-xs">© 2025 Cari y Juli. Hecho con amor.</p>
-              </div>
-            </div>
-          </footer>
+    <div class="w-16 sm:w-24 h-px bg-foreground/20 mx-auto mb-4 sm:mb-6"></div>
+    <div class="text-center">
+      <p class="text-foreground/50 text-xs">© 2025 Cari y Juli. Hecho con amor.</p>
+    </div>
+  </div>
+</footer>
+
 
         </div>
       </div>
@@ -1205,6 +1138,30 @@
         }, 15000);
       });
     })();
+
+    (function sortGiftsByPrice() {
+  const list = document.getElementById('giftCarousel');
+  if (!list) return;
+
+  const parseArs = s => {
+    // toma algo como "$1.500.000" o "$150.000"
+    const n = s.replace(/[^\d]/g, '');
+    return Number(n || 0);
+  };
+
+  const items = Array.from(list.querySelectorAll('label')).map(label => {
+    const priceSpan = Array.from(label.querySelectorAll('span'))
+      .find(sp => /\$/.test(sp.textContent));
+    const price = priceSpan ? parseArs(priceSpan.textContent) : Infinity;
+    return { label, price };
+  });
+
+  items.sort((a, b) => a.price - b.price);
+
+  // reinyectar en orden
+  items.forEach(({ label }) => list.appendChild(label));
+})();
+
 
   </script>
 </body>
