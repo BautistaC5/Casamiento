@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -29,34 +30,104 @@
   </script>
 
   <style>
-    .font-serif { font-family: "Times New Roman", Times, serif !important; }
-    .font-sans  { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans", "Liberation Sans", sans-serif !important; }
+    .font-serif {
+      font-family: "Times New Roman", Times, serif !important;
+    }
 
-    :root { --header-h: 72px; }
-    html  { scroll-padding-top: var(--header-h); }
+    .font-sans {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans", "Liberation Sans", sans-serif !important;
+    }
+
+    :root {
+      --header-h: 72px;
+    }
+
+    html {
+      scroll-padding-top: var(--header-h);
+    }
 
     .wedding-gradient {
       background:
-        radial-gradient(1200px 600px at 50% 120%, rgba(0,0,0,.04), transparent 60%),
-        radial-gradient(800px 400px at 60% -10%, rgba(0,0,0,.03), transparent 55%),
+        radial-gradient(1200px 600px at 50% 120%, rgba(0, 0, 0, .04), transparent 60%),
+        radial-gradient(800px 400px at 60% -10%, rgba(0, 0, 0, .03), transparent 55%),
         var(--bg, #F8EDDB);
     }
-    .floral-shadow { box-shadow: 0 18px 36px rgba(241,119,45,.28), 0 6px 14px rgba(0,0,0,.06); }
-    .elegant-border { border: 1px solid color-mix(in srgb, var(--border, #2b244d) 20%, transparent); }
 
-    @keyframes float { 0%{transform:translateY(0)} 50%{transform:translateY(-8px)} 100%{transform:translateY(0)} }
-    .animate-float{ animation: float 6s ease-in-out infinite; }
+    .floral-shadow {
+      box-shadow: 0 18px 36px rgba(241, 119, 45, .28), 0 6px 14px rgba(0, 0, 0, .06);
+    }
 
-    @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
-    .animate-fade-in{ animation: fadeIn .6s ease forwards; opacity:0; }
+    .elegant-border {
+      border: 1px solid color-mix(in srgb, var(--border, #2b244d) 20%, transparent);
+    }
 
-    @keyframes slideUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
-    .animate-slide-up{ animation: slideUp .8s cubic-bezier(.22,.9,.31,1) forwards; opacity:0; }
+    @keyframes float {
+      0% {
+        transform: translateY(0)
+      }
 
-    html, body { width:100%; overflow-x:hidden; }
-    img, svg, iframe { max-width:100%; height:auto; }
+      50% {
+        transform: translateY(-8px)
+      }
+
+      100% {
+        transform: translateY(0)
+      }
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn .6s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .animate-slide-up {
+      animation: slideUp .8s cubic-bezier(.22, .9, .31, 1) forwards;
+      opacity: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    img,
+    svg,
+    iframe {
+      max-width: 100%;
+      height: auto;
+    }
   </style>
 </head>
+
 <body class="bg-background text-foreground overflow-x-hidden">
   <div id="container">
     <div class="tailwind">
@@ -67,19 +138,27 @@
           <header class="fixed top-0 left-0 right-0 z-50 bg-background/70 backdrop-blur-md border-b border-border/50">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
               <nav class="flex items-center justify-between">
-                <div class="font-serif text-lg md:text-xl font-medium text-foreground/80 cursor-pointer hover:text-foreground transition-colors" data-scroll-to="#hero">C &amp; J</div>
+                <div
+                  class="font-serif text-lg md:text-xl font-medium text-foreground/80 cursor-pointer hover:text-foreground transition-colors"
+                  data-scroll-to="#hero">C &amp; J</div>
 
                 <!-- Desktop links -->
                 <div class="hidden md:flex items-center space-x-6">
-                  <button class="text-foreground/60 hover:text-primary transition-colors text-sm font-medium" data-scroll-to="#details">Detalles</button>
-                  <button class="text-foreground/60 hover:text-primary transition-colors text-sm font-medium" data-scroll-to="#gifts">Regalos</button>
-                  <button class="px-6 py-3 border border-foreground/60 text-sm sm:text-base font-medium text-foreground hover:bg-foreground hover:text-background transition-colors" data-scroll-to="#rsvp">RSVP</button>
+                  <button class="text-foreground/60 hover:text-primary transition-colors text-sm font-medium"
+                    data-scroll-to="#details">Detalles</button>
+                  <button class="text-foreground/60 hover:text-primary transition-colors text-sm font-medium"
+                    data-scroll-to="#gifts">Regalos</button>
+                  <button
+                    class="px-6 py-3 border border-foreground/60 text-sm sm:text-base font-medium text-foreground hover:bg-foreground hover:text-background transition-colors"
+                    data-scroll-to="#rsvp">RSVP</button>
                 </div>
 
                 <!-- Mobile toggle -->
-                <button id="menuToggle" class="md:hidden p-2 text-foreground/60 hover:text-foreground transition-colors" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileMenu">
+                <button id="menuToggle" class="md:hidden p-2 text-foreground/60 hover:text-foreground transition-colors"
+                  aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileMenu">
                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16">
+                    </path>
                   </svg>
                 </button>
               </nav>
@@ -87,9 +166,12 @@
               <!-- Mobile menu -->
               <div id="mobileMenu" class="md:hidden hidden pt-3">
                 <div class="flex flex-col gap-2 border-t border-border/30 pt-3">
-                  <button class="text-left py-2 px-1 text-foreground/80 hover:text-primary transition-colors" data-scroll-to="#details">Detalles</button>
-                  <button class="text-left py-2 px-1 text-foreground/80 hover:text-primary transition-colors" data-scroll-to="#gifts">Regalos</button>
-                  <button class="text-left py-2 px-1 text-primary hover:text-primary/80 transition-colors" data-scroll-to="#rsvp">RSVP</button>
+                  <button class="text-left py-2 px-1 text-foreground/80 hover:text-primary transition-colors"
+                    data-scroll-to="#details">Detalles</button>
+                  <button class="text-left py-2 px-1 text-foreground/80 hover:text-primary transition-colors"
+                    data-scroll-to="#gifts">Regalos</button>
+                  <button class="text-left py-2 px-1 text-primary hover:text-primary/80 transition-colors"
+                    data-scroll-to="#rsvp">RSVP</button>
                 </div>
               </div>
             </div>
@@ -97,11 +179,14 @@
 
           <main>
             <!-- HERO -->
-            <section id="hero" class="relative min-h-screen flex items-center justify-center wedding-gradient overflow-hidden pt-[var(--header-h)] pb-10 md:pb-20">
+            <section id="hero"
+              class="relative min-h-screen flex items-center justify-center wedding-gradient overflow-hidden pt-[var(--header-h)] pb-10 md:pb-20">
               <div class="absolute inset-0 opacity-30">
                 <div class="absolute top-20 left-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-float"></div>
-                <div class="absolute bottom-20 right-10 w-40 h-40 bg-accent/20 rounded-full blur-3xl animate-float" style="animation-delay:1s"></div>
-                <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-secondary/20 rounded-full blur-2xl animate-float" style="animation-delay:2s"></div>
+                <div class="absolute bottom-20 right-10 w-40 h-40 bg-accent/20 rounded-full blur-3xl animate-float"
+                  style="animation-delay:1s"></div>
+                <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-secondary/20 rounded-full blur-2xl animate-float"
+                  style="animation-delay:2s"></div>
               </div>
 
               <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
@@ -115,7 +200,9 @@
 
                 <div class="mb-6 md:mb-8 animate-fade-in" style="animation-delay:.3s">
                   <div class="inline-block text-center">
-                    <h1 class="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold text-foreground tracking-wide leading-tight">CARI Y JULI</h1>
+                    <h1
+                      class="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold text-foreground tracking-wide leading-tight">
+                      CARI Y JULI</h1>
                     <div class="h-[2px] bg-primary mt-1 w-full"></div>
                   </div>
                 </div>
@@ -126,12 +213,15 @@
 
                 <div class="animate-fade-in" style="animation-delay:.9s">
                   <div class="flex items-center justify-center gap-3">
-                    <button class="px-6 py-3 border border-foreground/60 text-sm sm:text-base font-medium text-foreground hover:bg-foreground hover:text-background transition-colors" data-scroll-to="#rsvp">RSVP</button>
+                    <button
+                      class="px-6 py-3 border border-foreground/60 text-sm sm:text-base font-medium text-foreground hover:bg-foreground hover:text-background transition-colors"
+                      data-scroll-to="#rsvp">RSVP</button>
                   </div>
                 </div>
                 <div class="mt-6 text-center select-none">
                   <div class="text-[11px] tracking-[0.12em] text-foreground/70 uppercase">Deslizá</div>
-                  <svg class="w-4 h-4 mx-auto mt-1 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <svg class="w-4 h-4 mx-auto mt-1 animate-bounce" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
@@ -149,738 +239,847 @@
             <!-- DETALLES -->
             <section id="details" class="py-14 md:py-20 bg-background scroll-mt-[var(--header-h)]">
               <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start lg:items-start">
-  <!-- COLUMNA IZQUIERDA: Venís + Querés regalarnos (apilados) -->
-  <div class="order-1 flex flex-col gap-10 lg:gap-12">
-    <!-- ¿Venís? -->
-    <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
-      <h3 class="font-serif text-3xl sm:text-4xl font-semibold text-foreground">¿Venís?</h3>
-      <p class="mt-3 text-foreground/70 max-w-md">
-        Para una mejor organización, es muy importante que nos ayudes confirmando tu asistencia:
-      </p>
-      <button
-        class="mt-5 inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-medium"
-        data-scroll-to="#rsvp">
-        RSVP
-      </button>
-    </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start lg:items-start">
+                  <!-- COLUMNA IZQUIERDA: Venís + Querés regalarnos (apilados) -->
+                  <div class="order-1 flex flex-col gap-10 lg:gap-12">
+                    <!-- ¿Venís? -->
+                    <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
+                      <h3 class="font-serif text-3xl sm:text-4xl font-semibold text-foreground">¿Venís?</h3>
+                      <p class="mt-3 text-foreground/70 max-w-md">
+                        Para una mejor organización, es muy importante que nos ayudes confirmando tu asistencia:
+                      </p>
+                      <button
+                        class="mt-5 inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-medium"
+                        data-scroll-to="#rsvp">
+                        RSVP
+                      </button>
+                    </div>
 
-    <!-- ¿Querés regalarnos? (debajo del Venís) -->
-    <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
-      <h3 class="font-serif text-3xl sm:text-4xl font-semibold text-foreground">¿Querés regalarnos?</h3>
-      <p class="mt-3 text-foreground/70 max-w-md">Mirá la lista de regalos:</p>
-      <button
-        class="mt-5 inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-medium"
-        data-scroll-to="#gifts">
-        REGALÁ
-      </button>
-    </div>
-  </div>
-
-  <!-- COLUMNA DERECHA: LISTA DE EVENTOS -->
-  <div class="order-2">
-    <div class="bg-card border-border/20 overflow-hidden">
-      <!-- CIVIL -->
-      <div class="flex items-start gap-4 p-5 sm:p-6 border-b border-border/10">
-        <div class="shrink-0 mt-1">
-          <svg class="w-7 h-7 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <circle cx="9" cy="12" r="5" stroke-width="2"></circle>
-            <circle cx="15" cy="12" r="5" stroke-width="2"></circle>
-          </svg>
-        </div>
-        <div class="flex-1">
-          <h4 class="font-sans font-bold tracking-wide text-sm text-foreground uppercase">Civil</h4>
-          <div class="mt-1 text-foreground/80 text-sm leading-6">
-            <div><span class="font-medium">Fecha:</span> 19 de Noviembre, 2025</div>
-            <div><span class="font-medium">Hora:</span> 14:00 HRS</div>
-            <div><span class="font-medium">Ubicación:</span> Jardín Japonés, Buenos Aires</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CEREMONIA -->
-      <div class="flex items-start gap-4 p-5 sm:p-6 border-b border-border/10">
-        <div class="shrink-0 mt-1">
-          <svg class="w-7 h-7 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-          </svg>
-        </div>
-        <div class="flex-1">
-          <h4 class="font-sans font-bold tracking-wide text-sm text-foreground uppercase">Ceremonia</h4>
-          <div class="mt-1 text-foreground/80 text-sm leading-6">
-            <div><span class="font-medium">Fecha:</span> 22 de Noviembre, 2025</div>
-            <div><span class="font-medium">Hora:</span> 20:00 HRS</div>
-            <div><span class="font-medium">Ubicación:</span> Catedral San Isidro, Buenos Aires</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- RECEPCIÓN & FIESTA -->
-      <div class="flex items-start gap-4 p-5 sm:p-6">
-        <div class="shrink-0 mt-1">
-          <svg class="w-7 h-7 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 10h10l1-6H6l1 6zm5 0v7m-4 0h8"/>
-          </svg>
-        </div>
-        <div class="flex-1">
-          <h4 class="font-sans font-bold tracking-wide text-sm text-foreground uppercase">Recepción &amp; Fiesta</h4>
-          <div class="mt-1 text-foreground/80 text-sm leading-6">
-            <div><span class="font-medium">Fecha:</span> 22 de Noviembre, 2025</div>
-            <div><span class="font-medium">Hora:</span> A partir de las 22:00 HRS</div>
-            <div><span class="font-medium">Ubicación:</span> Darwin Buen Ayre</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
+                    <!-- ¿Querés regalarnos? (debajo del Venís) -->
+                    <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
+                      <h3 class="font-serif text-3xl sm:text-4xl font-semibold text-foreground">¿Querés regalarnos?</h3>
+                      <p class="mt-3 text-foreground/70 max-w-md">Mirá la lista de regalos:</p>
+                      <button
+                        class="mt-5 inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-medium"
+                        data-scroll-to="#gifts">
+                        REGALÁ
+                      </button>
+                    </div>
+                  </div>
+                  <!-- COLUMNA DERECHA: LISTA DE EVENTOS -->
+                  <div class="order-2">
+                    <div class="bg-card border-border/20 overflow-hidden"> <!-- CIVIL -->
+                      <div class="flex items-start gap-4 p-5 sm:p-6 border-b border-border/10">
+                        <div class="shrink-0 mt-1"> <svg class="w-7 h-7 text-foreground" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor">
+                            <circle cx="9" cy="12" r="5" stroke-width="2"></circle>
+                            <circle cx="15" cy="12" r="5" stroke-width="2"></circle>
+                          </svg> </div>
+                        <div class="flex-1">
+                          <h4 class="font-sans font-bold tracking-wide text-sm text-foreground uppercase">Civil</h4>
+                          <div class="mt-1 text-foreground/80 text-sm leading-6">
+                            <div><span class="font-medium">Fecha:</span> 19 de Noviembre, 2025</div>
+                            <div><span class="font-medium">Hora:</span> 14:00 HRS</div>
+                            <div><span class="font-medium">Ubicación:</span>
+                              <a class="underline hover:no-underline text-primary"
+                                href="https://share.google/waBG9IiaXoY7sL0BQ" target="_blank" rel="noopener">
+                                Jardín Japonés, Buenos Aires
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div> <!-- CEREMONIA -->
+                      <div class="flex items-start gap-4 p-5 sm:p-6 border-b border-border/10">
+                        <div class="shrink-0 mt-1"> <svg class="w-7 h-7 text-foreground" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor">
+                            <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                          </svg> </div>
+                        <div class="flex-1">
+                          <h4 class="font-sans font-bold tracking-wide text-sm text-foreground uppercase">Ceremonia</h4>
+                          <div class="mt-1 text-foreground/80 text-sm leading-6">
+                            <div><span class="font-medium">Fecha:</span> 22 de Noviembre, 2025</div>
+                            <div><span class="font-medium">Hora:</span> 20:00 HRS</div>
+                            <div><span class="font-medium">Ubicación:</span>
+                              <a class="underline hover:no-underline text-primary"
+                                href="https://share.google/eBYLVIjS0WhEfb1El" target="_blank" rel="noopener">
+                                Catedral San Isidro, Buenos Aires
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div> <!-- RECEPCIÓN & FIESTA -->
+                      <div class="flex items-start gap-4 p-5 sm:p-6">
+                        <div class="shrink-0 mt-1"> <svg class="w-7 h-7 text-foreground" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor">
+                            <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              d="M7 10h10l1-6H6l1 6zm5 0v7m-4 0h8" />
+                          </svg> </div>
+                        <div class="flex-1">
+                          <h4 class="font-sans font-bold tracking-wide text-sm text-foreground uppercase">Recepción
+                            &amp; Fiesta</h4>
+                          <div class="mt-1 text-foreground/80 text-sm leading-6">
+                            <div><span class="font-medium">Fecha:</span> 22 de Noviembre, 2025</div>
+                            <div><span class="font-medium">Hora:</span> A partir de las 22:00 HRS</div>
+                            <div><span class="font-medium">Ubicación:</span>
+                              <a class="underline hover:no-underline text-primary"
+                                href="https://maps.app.goo.gl/6VxCXMfG6JsWpPnT9" target="_blank" rel="noopener">
+                                Darwin Buen Ayre
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </section>
-
-<section id="gifts-lead" class="bg-card">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 text-center">
-    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground">Regalos</h2>
-    <p class="mt-2 text-foreground/70 text-sm sm:text-base">Elegí una experiencia para regalarnos.</p>
-  </div>
-</section>
-
-            <!-- REGALOS (NUEVA SECCIÓN EN FORMATO TIENDA) -->
-            <section id="gifts" class="py-14 md:py-20 bg-background scroll-mt-[var(--header-h)]">
-<!-- REGALOS (SECCIÓN TIENDA) -->
-<section id="gifts" class="py-14 md:py-20 scroll-mt-[var(--header-h)]">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
-      <!-- 1 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/ceremonia_del_te.webp" alt="Ceremonia del té en Kioto con kimono" class="w-full h-full object-cover">
         </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Ceremonia del té</p>
-          <p class="text-sm text-foreground/60 mt-1" data-price="$90.000">$90.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+
+      </div>
+      </section>
+
+      <section id="gifts-lead" class="bg-card">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 text-center">
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground">Regalos</h2>
+          <p class="mt-2 text-foreground/70 text-sm sm:text-base">Elegí una experiencia para regalarnos.</p>
+        </div>
+      </section>
+
+      <section id="gifts" class="py-14 md:py-20 bg-background scroll-mt-[var(--header-h)]">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <!-- grilla de regalos + lead card -->
+          <div id="giftGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
+
+            <!-- Lead card transferencia (2 columnas en md+) -->
+            <article class="col-span-2 sm:col-span-3 md:col-span-2">
+              <div class="border rounded-xl bg-white/70 p-3 sm:p-4 h-full">
+                <!-- MOBILE: fila con imagen cuadrada a la izquierda  -->
+                <!-- DESKTOP: banner bajo (max-h) -->
+                <div class="flex items-center md:items-start gap-4 md:gap-5">
+                  <div class="shrink-0 md:w-1/2">
+                    <!-- Mobile: cuadrado -->
+                    <div class="md:hidden w-24 h-24 sm:w-28 sm:h-28 rounded-lg overflow-hidden">
+                      <img src="img/michael.webp" alt="¿No sabés qué regalar?" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Desktop: banner bajito con ratio ancho -->
+                    <div class="hidden md:block rounded-lg overflow-hidden">
+                      <div class="md:h-[220px] lg:h-[240px] xl:h-[260px]">
+                        <img src="img/michael.webp" alt="¿No sabés qué regalar?"
+                          class="w-full h-full object-cover object-center">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex-1">
+                    <h3 class="font-serif text-xl sm:text-2xl md:text-3xl font-semibold leading-tight">¿No sabés qué
+                      regalar?</h3>
+                    <p class="mt-1 sm:mt-2 text-foreground/80">
+                      Hacenos una transferencia acá… la luna de miel no se paga sola 😉
+                    </p>
+                    <button type="button"
+                      class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+                      data-name="Transferencia para la luna de miel" data-price="">
+                      Regalá
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- 1 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/ceremonia_del_te.webp" alt="Ceremonia del té en Kioto con kimono"
+                  class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Ceremonia del té</p>
+                <p class="text-sm text-foreground/60 mt-1" data-price="$90.000">$90.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Ceremonia del té en Kioto con kimono" data-price="$90.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 2 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/sushi.webp" alt="Clase privada de sushi en Tokio" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Clase de sushi</p>
-          <p class="text-sm text-foreground/60 mt-1">$150.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 2 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/sushi.webp" alt="Clase privada de sushi en Tokio" class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Clase de sushi</p>
+                <p class="text-sm text-foreground/60 mt-1">$150.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Clase privada de sushi en Tokio" data-price="$150.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 3 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/kimono_gion.webp" alt="Alquiler de kimonos + paseo en Gion" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Gion en kimono</p>
-          <p class="text-sm text-foreground/60 mt-1">$120.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 3 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/kimono_gion.webp" alt="Alquiler de kimonos + paseo en Gion"
+                  class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Gion en kimono</p>
+                <p class="text-sm text-foreground/60 mt-1">$120.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Alquiler de kimonos + paseo en Gion" data-price="$120.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 4 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/samurai.webp" alt="Experiencia de samurái" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Experiencia de samurái</p>
-          <p class="text-sm text-foreground/60 mt-1">$180.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 4 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/samurai.webp" alt="Experiencia de samurái" class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Experiencia de samurái</p>
+                <p class="text-sm text-foreground/60 mt-1">$180.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Experiencia de samurái" data-price="$180.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 5 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/caligrafia.webp" alt="Clase de caligrafía japonesa y origami" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Caligrafía + Origami</p>
-          <p class="text-sm text-foreground/60 mt-1">$100.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 5 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/caligrafia.webp" alt="Clase de caligrafía japonesa y origami"
+                  class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Caligrafía + Origami</p>
+                <p class="text-sm text-foreground/60 mt-1">$100.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Clase de caligrafía japonesa y origami" data-price="$100.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 6 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/fushimi.webp" alt="Excursión Nara + Fushimi Inari" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Nara + Fushimi Inari</p>
-          <p class="text-sm text-foreground/60 mt-1">$180.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 6 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/fushimi.webp" alt="Excursión Nara + Fushimi Inari" class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Nara + Fushimi Inari</p>
+                <p class="text-sm text-foreground/60 mt-1">$180.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Excursión Nara + Fushimi Inari" data-price="$180.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 7 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/templos.webp" alt="Tour templos de Kioto" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Templos de Kioto</p>
-          <p class="text-sm text-foreground/60 mt-1">$200.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 7 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/templos.webp" alt="Tour templos de Kioto" class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Templos de Kioto</p>
+                <p class="text-sm text-foreground/60 mt-1">$200.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Tour templos de Kioto" data-price="$200.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 8 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/nikko.webp" alt="Excursión a Nikko desde Tokio" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Nikko desde Tokio</p>
-          <p class="text-sm text-foreground/60 mt-1">$120.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 8 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/nikko.webp" alt="Excursión a Nikko desde Tokio" class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Nikko desde Tokio</p>
+                <p class="text-sm text-foreground/60 mt-1">$120.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Excursión a Nikko desde Tokio" data-price="$120.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 9 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/hiroshima.webp" alt="Hiroshima y Miyajima" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Hiroshima y Miyajima</p>
-          <p class="text-sm text-foreground/60 mt-1">$240.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 9 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/hiroshima.webp" alt="Hiroshima y Miyajima" class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Hiroshima y Miyajima</p>
+                <p class="text-sm text-foreground/60 mt-1">$240.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Hiroshima y Miyajima" data-price="$240.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 10 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/fuji.webp" alt="Tour privado Monte Fuji y Lago Ashi" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Privado Fuji + Ashi</p>
-          <p class="text-sm text-foreground/60 mt-1">$300.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 10 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/fuji.webp" alt="Tour privado Monte Fuji y Lago Ashi" class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Privado Fuji + Ashi</p>
+                <p class="text-sm text-foreground/60 mt-1">$300.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Tour privado Monte Fuji y Lago Ashi" data-price="$300.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 11 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/arashiyama.webp" alt="Rickshaw en Arashiyama + bosque de bambú" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Rickshaw en Arashiyama</p>
-          <p class="text-sm text-foreground/60 mt-1">$200.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 11 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/arashiyama.webp" alt="Rickshaw en Arashiyama + bosque de bambú"
+                  class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Rickshaw en Arashiyama</p>
+                <p class="text-sm text-foreground/60 mt-1">$200.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Rickshaw en Arashiyama + bosque de bambú" data-price="$200.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 12 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/crucero.webp" alt="Crucero nocturno bahía de Tokio" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Crucero nocturno Tokio</p>
-          <p class="text-sm text-foreground/60 mt-1">$220.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 12 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/crucero.webp" alt="Crucero nocturno bahía de Tokio" class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Crucero nocturno Tokio</p>
+                <p class="text-sm text-foreground/60 mt-1">$220.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Crucero nocturno bahía de Tokio" data-price="$220.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 13 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/hanami.webp" alt="Excursión Hanami o Momiji" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Hanami / Momiji</p>
-          <p class="text-sm text-foreground/60 mt-1">$150.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 13 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/hanami.webp" alt="Excursión Hanami o Momiji" class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Hanami / Momiji</p>
+                <p class="text-sm text-foreground/60 mt-1">$150.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Excursión Hanami o Momiji" data-price="$150.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 14 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/takayama.webp" alt="Senderismo Takayama y Shirakawa-go" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Takayama &amp; Shirakawa-go</p>
-          <p class="text-sm text-foreground/60 mt-1">$250.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 14 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/takayama.webp" alt="Senderismo Takayama y Shirakawa-go"
+                  class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Takayama &amp; Shirakawa-go</p>
+                <p class="text-sm text-foreground/60 mt-1">$250.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Senderismo Takayama y Shirakawa-go" data-price="$250.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 15 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/hozugawa.webp" alt="Paseo en barco por el río Hozugawa" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Barco Río Hozugawa</p>
-          <p class="text-sm text-foreground/60 mt-1">$140.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 15 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/hozugawa.webp" alt="Paseo en barco por el río Hozugawa"
+                  class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Barco Río Hozugawa</p>
+                <p class="text-sm text-foreground/60 mt-1">$140.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Paseo en barco por el río Hozugawa" data-price="$140.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 16 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/ryokan.webp" alt="Noche en ryokan con onsen en Hakone" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Ryokan con onsen (Hakone)</p>
-          <p class="text-sm text-foreground/60 mt-1">$270.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 16 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/ryokan.webp" alt="Noche en ryokan con onsen en Hakone" class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Ryokan con onsen (Hakone)</p>
+                <p class="text-sm text-foreground/60 mt-1">$270.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Noche en ryokan con onsen en Hakone" data-price="$270.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 17 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/kaiseki.webp" alt="Cena kaiseki gourmet en Kioto" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Cena kaiseki (Kioto)</p>
-          <p class="text-sm text-foreground/60 mt-1">$200.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 17 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/kaiseki.webp" alt="Cena kaiseki gourmet en Kioto" class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Cena kaiseki (Kioto)</p>
+                <p class="text-sm text-foreground/60 mt-1">$200.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Cena kaiseki gourmet en Kioto" data-price="$200.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 18 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/sumo.webp" alt="Experiencia sumo" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Experiencia sumo</p>
-          <p class="text-sm text-foreground/60 mt-1">$220.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 18 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/sumo.webp" alt="Experiencia sumo" class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Experiencia sumo</p>
+                <p class="text-sm text-foreground/60 mt-1">$220.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Experiencia sumo" data-price="$220.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 19 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/shinjunku.webp" alt="Tour nocturno izakayas en Shinjuku" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Izakayas en Shinjuku</p>
-          <p class="text-sm text-foreground/60 mt-1">$160.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 19 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/shinjunku.webp" alt="Tour nocturno izakayas en Shinjuku"
+                  class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Izakayas en Shinjuku</p>
+                <p class="text-sm text-foreground/60 mt-1">$160.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Tour nocturno izakayas en Shinjuku" data-price="$160.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 20 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/ghibli.webp" alt="Museo Ghibli en Mitaka" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Museo Ghibli (Mitaka)</p>
-          <p class="text-sm text-foreground/60 mt-1">$100.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 20 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/ghibli.webp" alt="Museo Ghibli en Mitaka" class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Museo Ghibli (Mitaka)</p>
+                <p class="text-sm text-foreground/60 mt-1">$100.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Visita al Museo Ghibli en Mitaka" data-price="$100.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 21 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/geishas.webp" alt="Experiencia privada de geishas en Kioto" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Geishas (privado) Kioto</p>
-          <p class="text-sm text-foreground/60 mt-1">$400.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 21 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/geishas.webp" alt="Experiencia privada de geishas en Kioto"
+                  class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Geishas (privado) Kioto</p>
+                <p class="text-sm text-foreground/60 mt-1">$400.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Experiencia privada de geishas en Kioto" data-price="$400.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 22 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/kaiseki_chef.webp" alt="Curso de cocina kaiseki con chef Michelin" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Cocina kaiseki (Michelin)</p>
-          <p class="text-sm text-foreground/60 mt-1">$500.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 22 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/kaiseki_chef.webp" alt="Curso de cocina kaiseki con chef Michelin"
+                  class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Cocina kaiseki (Michelin)</p>
+                <p class="text-sm text-foreground/60 mt-1">$500.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Curso de cocina kaiseki con chef Michelin" data-price="$500.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 23 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/sesion_foto.webp" alt="Sesión fotográfica privada en templos históricos" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Sesión fotográfica (templos)</p>
-          <p class="text-sm text-foreground/60 mt-1">$450.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 23 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/sesion_foto.webp" alt="Sesión fotográfica privada en templos históricos"
+                  class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Sesión fotográfica (templos)</p>
+                <p class="text-sm text-foreground/60 mt-1">$450.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Sesión fotográfica privada en templos históricos" data-price="$450.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 24 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/helicoptero_fuji.webp" alt="Tour en helicóptero Tokio + Monte Fuji" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Helicóptero: Tokio + Fuji</p>
-          <p class="text-sm text-foreground/60 mt-1">$700.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 24 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/helicoptero_fuji.webp" alt="Tour en helicóptero Tokio + Monte Fuji"
+                  class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Helicóptero: Tokio + Fuji</p>
+                <p class="text-sm text-foreground/60 mt-1">$700.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Tour en helicóptero Tokio + Monte Fuji" data-price="$700.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 25 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/shinkansen.webp" alt="Viaje en Shinkansen Gran Class" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Shinkansen Gran Class</p>
-          <p class="text-sm text-foreground/60 mt-1">$450.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 25 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/shinkansen.webp" alt="Viaje en Shinkansen Gran Class" class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Shinkansen Gran Class</p>
+                <p class="text-sm text-foreground/60 mt-1">$450.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Viaje en Shinkansen Gran Class" data-price="$450.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 26 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/coche_lujo.webp" alt="Excursión privada en coche de lujo por Kioto y Nara" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Coche de lujo: Kioto &amp; Nara</p>
-          <p class="text-sm text-foreground/60 mt-1">$500.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 26 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/coche_lujo.webp" alt="Excursión privada en coche de lujo por Kioto y Nara"
+                  class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Coche de lujo: Kioto &amp; Nara</p>
+                <p class="text-sm text-foreground/60 mt-1">$500.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Excursión privada en coche de lujo por Kioto y Nara" data-price="$500.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 27 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/ryokan_privado.webp" alt="Estadía en ryokan de lujo con onsen privado" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Ryokan con onsen (lujo)</p>
-          <p class="text-sm text-foreground/60 mt-1">$800.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 27 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/ryokan_privado.webp" alt="Estadía en ryokan de lujo con onsen privado"
+                  class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Ryokan con onsen (lujo)</p>
+                <p class="text-sm text-foreground/60 mt-1">$800.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Estadía en ryokan de lujo con onsen privado" data-price="$800.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 28 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/glamping_fuji.webp" alt="Glamping de lujo en el Monte Fuji" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Glamping Monte Fuji</p>
-          <p class="text-sm text-foreground/60 mt-1">$600.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 28 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/glamping_fuji.webp" alt="Glamping de lujo en el Monte Fuji"
+                  class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Glamping Monte Fuji</p>
+                <p class="text-sm text-foreground/60 mt-1">$600.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Glamping de lujo en el Monte Fuji" data-price="$600.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 29 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/sumo_vip.webp" alt="Asientos VIP para torneo de sumo en Tokio" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Sumo VIP (Tokio)</p>
-          <p class="text-sm text-foreground/60 mt-1">$400.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 29 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/sumo_vip.webp" alt="Asientos VIP para torneo de sumo en Tokio"
+                  class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Sumo VIP (Tokio)</p>
+                <p class="text-sm text-foreground/60 mt-1">$400.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Asientos VIP para torneo de sumo en Tokio" data-price="$400.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 30 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/crucero_seto.webp" alt="Crucero de lujo por el mar interior de Seto" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Crucero Seto (lujo)</p>
-          <p class="text-sm text-foreground/60 mt-1">$1.000.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 30 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/crucero_seto.webp" alt="Crucero de lujo por el mar interior de Seto"
+                  class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Crucero Seto (lujo)</p>
+                <p class="text-sm text-foreground/60 mt-1">$1.000.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Crucero de lujo por el mar interior de Seto" data-price="$1.000.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 31 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/sorteo_madrina_padrino.webp" alt="Sorteo: Madrina o Padrino de nuestro hijo" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Sorteo: Madrina/Padrino</p>
-          <p class="text-sm text-foreground/60 mt-1">$1.500.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 31 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/sorteo_madrina_padrino.webp" alt="Sorteo: Madrina o Padrino de nuestro hijo"
+                  class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Sorteo: Madrina/Padrino</p>
+                <p class="text-sm text-foreground/60 mt-1">$1.500.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Sorteo: Madrina o Padrino de nuestro hijo" data-price="$1.500.000">Regalá</button>
-        </div>
-      </div>
-      <!-- 32 -->
-      <div class="border rounded-xl overflow-hidden bg-white/70">
-        <div class="aspect-square overflow-hidden">
-          <img src="img/sorteo_nombre_hijo.webp" alt="Sorteo: Elegir el nombre de nuestro hijo" class="w-full h-full object-cover">
-        </div>
-        <div class="p-3">
-          <p class="text-sm text-foreground/80">Sorteo: Nombre del hijo</p>
-          <p class="text-sm text-foreground/60 mt-1">$2.500.000</p>
-          <button type="button" class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
+              </div>
+            </div>
+            <!-- 32 -->
+            <div class="border rounded-xl overflow-hidden bg-white/70">
+              <div class="aspect-square overflow-hidden">
+                <img src="img/sorteo_nombre_hijo.webp" alt="Sorteo: Elegir el nombre de nuestro hijo"
+                  class="w-full h-full object-cover">
+              </div>
+              <div class="p-3">
+                <p class="text-sm text-foreground/80">Sorteo: Nombre del hijo</p>
+                <p class="text-sm text-foreground/60 mt-1">$2.500.000</p>
+                <button type="button"
+                  class="mt-3 w-full text-sm px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition btn-regala"
                   data-name="Sorteo: Elegir el nombre de nuestro hijo" data-price="$2.500.000">Regalá</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
-<!-- MODAL REGALAR (CON FORM + SCROLL INTERNO) -->
-<div id="giftModal" class="fixed inset-0 z-[60] hidden">
-  <!-- Backdrop -->
-  <div class="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
+      <!-- MODAL REGALAR (CON FORM + SCROLL INTERNO) -->
+      <div id="giftModal" class="fixed inset-0 z-[60] hidden">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
 
-  <!-- Dialog wrapper centrado -->
-  <div class="relative mx-auto w-[92%] sm:w-full max-w-lg mt-10 sm:mt-24
+        <!-- Dialog wrapper centrado -->
+        <div class="relative mx-auto w-[92%] sm:w-full max-w-lg mt-10 sm:mt-24
               flex items-start justify-center pointer-events-none">
-    <!-- Dialog: max alto + scroll interno -->
-    <div class="pointer-events-auto bg-card rounded-2xl border border-border/30 shadow-xl
+          <!-- Dialog: max alto + scroll interno -->
+          <div class="pointer-events-auto bg-card rounded-2xl border border-border/30 shadow-xl
                 w-full max-h-[85vh] overflow-y-auto overscroll-contain">
-      <div class="p-5 sm:p-6">
-        <h3 class="font-serif text-xl sm:text-2xl text-foreground mb-2">¡Gracias por tu regalo! 🎁</h3>
-        <p class="text-foreground/80">
-          Estás por regalar <span id="giftName" class="font-medium"></span> que tiene un valor de
-          <span id="giftPrice" class="font-medium"></span>.
-        </p>
+            <div class="p-5 sm:p-6">
+              <h3 class="font-serif text-xl sm:text-2xl text-foreground mb-2">¡Gracias por tu regalo! 🎁</h3>
+              <p class="text-foreground/80" id="giftIntro">
+                Estás por regalar <span id="giftName" class="font-medium"></span>
+                <span id="giftPriceWrap"> que tiene un valor de
+                  <span id="giftPrice" class="font-medium"></span>.
+                </span>
+              </p>
 
-        <!-- FORM -->
-        <form id="giftForm" action="enviar_regalo.php" method="POST" class="mt-5 space-y-4">
-          <input type="hidden" name="regalo_nombre" id="gift_name_input">
-          <input type="hidden" name="regalo_precio" id="gift_price_input">
-          <input type="hidden" name="pago_metodo" id="gift_pay_method_input" value="cbu">
+              <!-- FORM -->
+              <form id="giftForm" action="enviar_regalo.php" method="POST" class="mt-5 space-y-4">
+                <input type="hidden" name="regalo_nombre" id="gift_name_input">
+                <input type="hidden" name="regalo_precio" id="gift_price_input">
+                <input type="hidden" name="pago_metodo" id="gift_pay_method_input" value="cbu">
 
-          <div>
-            <label class="block text-sm font-medium text-foreground mb-2">Nombre(s) de quien(es) regalan</label>
-            <input type="text" name="donantes" required
-                   placeholder="Ej: Ana Pérez, Juan Gómez"
-                   class="w-full px-3 py-2 rounded-lg border border-border bg-input-background">
-            <p class="text-xs text-foreground/60 mt-1">Podés escribir varios, separados por coma.</p>
-          </div>
-          <div class="pt-2">
-            <p class="text-sm text-foreground/80 mb-2">Elegí cómo transferirnos:</p>
-            <div class="flex gap-3">
-              <label class="inline-flex items-center gap-2">
-                <input type="radio" name="payMethodUI" value="cbu" class="accent-primary" checked>
-                <span>CBU/Alias</span>
-              </label>
-              <label class="inline-flex items-center gap-2">
-                <input type="radio" name="payMethodUI" value="mp" class="accent-primary">
-                <span>Mercado Pago</span>
-              </label>
-            </div>
+                <div>
+                  <label class="block text-sm font-medium text-foreground mb-2">Nombre(s) de quien(es) regalan</label>
+                  <input type="text" name="donantes" required placeholder="Ej: Ana Pérez, Juan Gómez"
+                    class="w-full px-3 py-2 rounded-lg border border-border bg-input-background">
+                  <p class="text-xs text-foreground/60 mt-1">Podés escribir varios, separados por coma.</p>
+                </div>
+                <div class="pt-2">
+                  <p class="text-sm text-foreground/80 mb-2">Elegí cómo transferirnos:</p>
+                  <div class="flex gap-3">
+                    <label class="inline-flex items-center gap-2">
+                      <input type="radio" name="payMethodUI" value="cbu" class="accent-primary" checked>
+                      <span>CBU/Alias</span>
+                    </label>
+                    <label class="inline-flex items-center gap-2">
+                      <input type="radio" name="payMethodUI" value="mp" class="accent-primary">
+                      <span>Mercado Pago</span>
+                    </label>
+                  </div>
 
-            <div id="panelCBU" class="mt-4 space-y-2">
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
-                <span class="text-sm text-foreground/70">CBU</span>
-                <input type="text" id="txtCBU" readonly value="0000000000000000000000"
-                       class="sm:col-span-2 w-full px-3 py-2 rounded-lg border border-border bg-input-background text-sm">
-                <button type="button" class="col-span-1 sm:col-span-3 w-full sm:w-auto mt-1 sm:mt-0 px-3 py-2 rounded-lg border hover:bg-muted text-sm"
+                  <div id="panelCBU" class="mt-4 space-y-2">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
+                      <span class="text-sm text-foreground/70">CBU</span>
+                      <input type="text" id="txtCBU" readonly value="0000000000000000000000"
+                        class="sm:col-span-2 w-full px-3 py-2 rounded-lg border border-border bg-input-background text-sm">
+                      <button type="button"
+                        class="col-span-1 sm:col-span-3 w-full sm:w-auto mt-1 sm:mt-0 px-3 py-2 rounded-lg border hover:bg-muted text-sm"
                         data-copy="#txtCBU">Copiar CBU</button>
-              </div>
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
-                <span class="text-sm text-foreground/70">Alias</span>
-                <input type="text" id="txtAlias" readonly value="CARIJULI.AHORROS"
-                       class="sm:col-span-2 w-full px-3 py-2 rounded-lg border border-border bg-input-background text-sm">
-                <button type="button" class="col-span-1 sm:col-span-3 w-full sm:w-auto mt-1 sm:mt-0 px-3 py-2 rounded-lg border hover:bg-muted text-sm"
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
+                      <span class="text-sm text-foreground/70">Alias</span>
+                      <input type="text" id="txtAlias" readonly value="CARIJULI.AHORROS"
+                        class="sm:col-span-2 w-full px-3 py-2 rounded-lg border border-border bg-input-background text-sm">
+                      <button type="button"
+                        class="col-span-1 sm:col-span-3 w-full sm:w-auto mt-1 sm:mt-0 px-3 py-2 rounded-lg border hover:bg-muted text-sm"
                         data-copy="#txtAlias">Copiar Alias</button>
-              </div>
-              <p class="text-xs text-foreground/60 mt-3">En el detalle podés poner “Regalo <span id="giftNameMini" class="font-medium"></span>”. ¡Gracias!</p>
-            </div>
+                    </div>
+                    <p class="text-xs text-foreground/60 mt-3">En el detalle podés poner “Regalo <span id="giftNameMini"
+                        class="font-medium"></span>”. ¡Gracias!</p>
+                  </div>
 
-            <div id="panelMP" class="mt-4 hidden">
-              <p class="text-sm text-foreground/80">Podés usar este link de Mercado Pago:</p>
-              <a id="mpLink" href="#" target="_blank" rel="noopener"
-                 class="inline-flex items-center mt-3 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 text-sm">
-                Abrir link de Mercado Pago
-              </a>
-              <p class="text-xs text-foreground/60 mt-3">Si el link no funciona, avisanos y te lo reenviamos.</p>
-            </div>
-          </div>
+                  <div id="panelMP" class="mt-4 hidden">
+                    <p class="text-sm text-foreground/80">Podés usar este link de Mercado Pago:</p>
+                    <a id="mpLink" href="#" target="_blank" rel="noopener"
+                      class="inline-flex items-center mt-3 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 text-sm">
+                      Abrir link de Mercado Pago
+                    </a>
+                    <p class="text-xs text-foreground/60 mt-3">Si el link no funciona, avisanos y te lo reenviamos.
+                    </p>
+                  </div>
+                </div>
 
-          <!-- Acciones sticky (siempre visibles en mobile) -->
-          <div class="sticky bottom-0 left-0 right-0 bg-card/95 backdrop-blur border-t border-border/20
+                <!-- Acciones sticky (siempre visibles en mobile) -->
+                <div class="sticky bottom-0 left-0 right-0 bg-card/95 backdrop-blur border-t border-border/20
                       -mx-5 sm:-mx-6 px-5 sm:px-6 py-3 flex flex-col sm:flex-row gap-2 sm:justify-end">
-            <button type="button" id="btnCloseGift"
+                  <button type="button" id="btnCloseGift"
                     class="w-full sm:w-auto px-4 py-2 rounded-lg border hover:bg-muted">Cerrar</button>
-            <button type="submit"
+                  <button type="submit"
                     class="w-full sm:w-auto px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90">
-              Regalar
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Toast -->
-<div id="giftToast" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-[70] hidden">
-  <div class="bg-foreground text-background px-4 py-3 rounded-lg shadow-lg text-sm">
-    ¡Gracias! Registramos tu regalo. 💌
-  </div>
-</div>
-
-
-
-            </section>
-
-            <section id="rsvp-lead" class="bg-card">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 text-center">
-    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground">RSVP</h2>
-    <p class="mt-2 text-foreground/70 text-sm sm:text-base">Completá el formulario para confirmar tu asistencia.</p>
-  </div>
-</section>
-
-            <!-- RSVP -->
-            <section id="rsvp" class="py-16 md:py-20 lg:py-32 bg-background scroll-mt-[var(--header-h)]">
-              <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-
-                <form action="enviar.php" method="POST" id="rsvpForm" class="space-y-5 sm:space-y-6 animate-fade-in bg-card rounded-xl p-4 sm:p-5 elegant-border" style="animation-delay:.2s">
-                  <!-- Invitado ÚNICO (se elimina la opción de agregar más) -->
-                  <div id="invitados" class="space-y-6">
-                    <div class="invitado">
-                      <h4 class="font-serif text-lg font-medium mb-4">Invitado</h4>
-                      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <div>
-                          <label class="block text-sm font-medium text-foreground mb-2">Nombre</label>
-                          <input type="text" class="w-full px-4 py-3 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" name="nombre[]" oninput="validarTexto(this)" required>
-                        </div>
-                        <div>
-                          <label class="block text-sm font-medium text-foreground mb-2">Apellido</label>
-                          <input type="text" class="w-full px-4 py-3 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" name="apellido[]" oninput="validarTexto(this)" required>
-                        </div>
-                        <div>
-                          <label class="block text-sm font-medium text-foreground mb-2">Menú</label>
-                          <select class="w-full px-4 py-3 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer" name="menu[]">
-                            <option value="Estandar">Estándar</option>
-                            <!-- <option value="Vegano">Vegano</option>  eliminado -->
-                            <option value="Vegetariano">Vegetariano</option>
-                            <option value="Celiaco">Celíaco</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Teléfono principal (se auto-completa si eligen combi = Sí) -->
-                  <div>
-                    <label for="phone" class="block text-sm font-medium text-foreground mb-2">Teléfono</label>
-                    <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="+54 9 11 XXXX-XXXX">
-                  </div>
-
-                  <!-- ¿Usás combi? Sí/No + campos dependientes -->
-                  <div class="mt-2">
-                    <p class="block text-sm font-medium text-foreground mb-2">¿Usás combi?</p>
-                    <div class="flex items-center gap-6">
-                      <label class="inline-flex items-center gap-2">
-                        <input type="radio" name="usa_combi" value="si" id="combiYes" class="accent-primary">
-                        <span>Sí</span>
-                      </label>
-                      <label class="inline-flex items-center gap-2">
-                        <input type="radio" name="usa_combi" value="no" id="combiNo" class="accent-primary" checked>
-                        <span>No</span>
-                      </label>
-                    </div>
-
-                    <div id="combiFields" class="mt-4 hidden">
-                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                          <label class="block text-sm font-medium text-foreground mb-2">Barrio</label>
-                          <select id="combiBarrio" name="combi_barrio" class="w-full px-4 py-3 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer">
-                            <option value="" selected disabled>Elegí tu barrio</option>
-                            <option>Recoleta</option>
-                            <option>Palermo</option>
-                            <option>Belgrano</option>
-                            <option>Caballito</option>
-                            <option>Almagro</option>
-                            <option>Flores</option>
-                            <option>Montserrat</option>
-                            <option>San Telmo</option>
-                            <option>Villa Urquiza</option>
-                            <option>Núñez</option>
-                            <option>Colegiales</option>
-                            <option>Chacarita</option>
-                          </select>
-                        </div>
-                        <div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- MENSAJE -->
-                  <div>
-                    <label for="message" class="block text-sm font-medium text-foreground mb-2">Mensaje para los novios</label>
-                    <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary resize-none" placeholder="¡Déjanos un mensaje especial!"></textarea>
-                  </div>
-
-                  <div class="pt-4 sm:pt-6">
-                    <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-4 sm:py-5 px-6 rounded-lg font-medium transition-all duration-300 floral-shadow hover:shadow-xl transform hover:scale-[1.02] min-h-[52px] active:scale-[0.98]">Confirmar Asistencia</button>
-                  </div>
-                </form>
-
-                <div class="mt-8 md:mt-12 p-4 sm:p-6 bg-muted rounded-xl text-center animate-fade-in" style="animation-delay:.4s">
-                  <p class="text-foreground/70 text-sm sm:text-base">¿Tenés alguna pregunta? Contactanos al <a href="tel:+5491136846005" class="text-primary hover:text-primary/80 transition-colors">+54 9 11 3684-6005</a></p>
+                    Regalar
+                  </button>
                 </div>
-              </div>
-            </section>
-          </main>
-
-          <!-- FOOTER -->
-          <footer class="bg-card text-foreground py-12 md:py-16">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div class="text-center mb-6 md:mb-8">
-                <svg class="w-12 h-6 sm:w-16 sm:h-8 mx-auto opacity-60" viewBox="0 0 64 32" fill="none">
-                  <ellipse cx="20" cy="16" rx="4" ry="3" fill="currentColor" opacity=".7"></ellipse>
-                  <ellipse cx="32" cy="12" rx="5" ry="4" fill="currentColor" opacity=".8"></ellipse>
-                  <ellipse cx="44" cy="16" rx="4" ry="3" fill="currentColor" opacity=".7"></ellipse>
-                  <path d="M16 16C16 16 20 20 24 18" stroke="currentColor" stroke-width="1" fill="none" opacity=".6"></path>
-                  <path d="M28 12C28 12 32 16 36 14" stroke="currentColor" stroke-width="1" fill="none" opacity=".6"></path>
-                  <path d="M40 16C40 16 44 20 48 18" stroke="currentColor" stroke-width="1" fill="none" opacity=".6"></path>
-                </svg>
-              </div>
-
-              <div class="text-center mb-6 md:mb-8">
-                <h3 class="font-serif text-xl sm:text-2xl md:text-3xl font-medium mb-3 sm:mb-4">Cari y Juli</h3>
-                <p class="text-foreground/80 text-base sm:text-lg mb-2">19 de Noviembre, 2025</p>
-                <p class="text-foreground/70 text-sm sm:text-base">Jardín Japonés, Buenos Aires</p>
-              </div>
-
-              <div class="text-center mb-6 md:mb-8">
-                <p class="text-foreground/60 text-xs sm:text-sm mb-3">Para consultas, contáctanos:</p>
-                <div class="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
-                  <a href="mailto:boda@ejemplo.com" class="text-foreground/80 hover:text-foreground transition-colors text-sm min-h-[44px] flex items-center">boda@ejemplo.com</a>
-                  <span class="text-foreground/40 hidden sm:inline">•</span>
-                  <a href="tel:+5491136846005" class="text-foreground/80 hover:text-foreground transition-colors text-sm min-h-[44px] flex items-center">+54 9 11 3684-6005</a>
-                </div>
-              </div>
-
-              <div class="w-16 sm:w-24 h-px bg-foreground/20 mx-auto mb-4 sm:mb-6"></div>
-              <div class="text-center">
-                <p class="text-foreground/50 text-xs">© 2025 Cari y Juli. Hecho con amor.</p>
-              </div>
+              </form>
             </div>
-          </footer>
-
+          </div>
         </div>
       </div>
+
+      <!-- Toast -->
+      <div id="giftToast" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-[70] hidden">
+        <div class="bg-foreground text-background px-4 py-3 rounded-lg shadow-lg text-sm">
+          ¡Gracias! Registramos tu regalo. 💌
+        </div>
+      </div>
+
+
+
+      </section>
+
+      <section id="rsvp-lead" class="bg-card">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 text-center">
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground">RSVP</h2>
+          <p class="mt-2 text-foreground/70 text-sm sm:text-base">Completá el formulario para confirmar tu asistencia.
+          </p>
+        </div>
+      </section>
+
+      <!-- RSVP -->
+      <section id="rsvp" class="py-16 md:py-20 lg:py-32 bg-background scroll-mt-[var(--header-h)]">
+        <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <form action="enviar.php" method="POST" id="rsvpForm"
+            class="space-y-5 sm:space-y-6 animate-fade-in bg-card rounded-xl p-4 sm:p-5 elegant-border"
+            style="animation-delay:.2s">
+            <!-- Invitado ÚNICO (se elimina la opción de agregar más) -->
+            <div id="invitados" class="space-y-6">
+              <div class="invitado">
+                <h4 class="font-serif text-lg font-medium mb-4">Invitado</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium text-foreground mb-2">Nombre</label>
+                    <input type="text"
+                      class="w-full px-4 py-3 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                      name="nombre[]" oninput="validarTexto(this)" required>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-foreground mb-2">Apellido</label>
+                    <input type="text"
+                      class="w-full px-4 py-3 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                      name="apellido[]" oninput="validarTexto(this)" required>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-foreground mb-2">Menú</label>
+                    <select
+                      class="w-full px-4 py-3 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                      name="menu[]">
+                      <option value="Estandar">Estándar</option>
+                      <!-- <option value="Vegano">Vegano</option>  eliminado -->
+                      <option value="Vegetariano">Vegetariano</option>
+                      <option value="Celiaco">Celíaco</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Teléfono principal (se auto-completa si eligen combi = Sí) -->
+            <div>
+              <label for="phone" class="block text-sm font-medium text-foreground mb-2">Teléfono</label>
+              <input type="tel" id="phone" name="phone"
+                class="w-full px-4 py-3 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                placeholder="+54 9 11 XXXX-XXXX">
+            </div>
+
+            <!-- ¿Usás combi? Sí/No + campos dependientes -->
+            <div class="mt-2">
+              <p class="block text-sm font-medium text-foreground mb-2">¿Querés venir en combi?</p>
+              <div class="flex items-center gap-6">
+                <label class="inline-flex items-center gap-2">
+                  <input type="radio" name="usa_combi" value="si" id="combiYes" class="accent-primary">
+                  <span>Sí</span>
+                </label>
+                <label class="inline-flex items-center gap-2">
+                  <input type="radio" name="usa_combi" value="no" id="combiNo" class="accent-primary" checked>
+                  <span>No</span>
+                </label>
+              </div>
+
+              <div id="combiFields" class="mt-4 hidden">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium text-foreground mb-2">Barrio</label>
+                    <input type="text" id="combiBarrio" name="combi_barrio" placeholder="Ej: Recoleta"
+                      class="w-full px-4 py-3 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+                  </div>
+                  <div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MENSAJE -->
+            <div>
+              <label for="message" class="block text-sm font-medium text-foreground mb-2">Mensaje para los
+                novios</label>
+              <textarea id="message" name="message" rows="4"
+                class="w-full px-4 py-3 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                placeholder="¡Déjanos un mensaje especial!"></textarea>
+            </div>
+
+            <div class="pt-4 sm:pt-6">
+              <button type="submit"
+                class="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-4 sm:py-5 px-6 rounded-lg font-medium transition-all duration-300 floral-shadow hover:shadow-xl transform hover:scale-[1.02] min-h-[52px] active:scale-[0.98]">Confirmar
+                Asistencia</button>
+            </div>
+          </form>
+
+          <div class="mt-8 md:mt-12 p-4 sm:p-6 bg-muted rounded-xl text-center animate-fade-in"
+            style="animation-delay:.4s">
+            <p class="text-foreground/70 text-sm sm:text-base">¿Tenés alguna pregunta? Contactanos al <a
+                href="tel:+5491136846005" class="text-primary hover:text-primary/80 transition-colors">+54 9 11
+                3684-6005</a></p>
+          </div>
+        </div>
+      </section>
+      </main>
+
+      <!-- FOOTER -->
+      <footer class="bg-card text-foreground py-12 md:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-6 md:mb-8">
+            <svg class="w-12 h-6 sm:w-16 sm:h-8 mx-auto opacity-60" viewBox="0 0 64 32" fill="none">
+              <ellipse cx="20" cy="16" rx="4" ry="3" fill="currentColor" opacity=".7"></ellipse>
+              <ellipse cx="32" cy="12" rx="5" ry="4" fill="currentColor" opacity=".8"></ellipse>
+              <ellipse cx="44" cy="16" rx="4" ry="3" fill="currentColor" opacity=".7"></ellipse>
+              <path d="M16 16C16 16 20 20 24 18" stroke="currentColor" stroke-width="1" fill="none" opacity=".6"></path>
+              <path d="M28 12C28 12 32 16 36 14" stroke="currentColor" stroke-width="1" fill="none" opacity=".6"></path>
+              <path d="M40 16C40 16 44 20 48 18" stroke="currentColor" stroke-width="1" fill="none" opacity=".6"></path>
+            </svg>
+          </div>
+
+          <div class="text-center mb-6 md:mb-8">
+            <h3 class="font-serif text-xl sm:text-2xl md:text-3xl font-medium mb-3 sm:mb-4">Cari y Juli</h3>
+            <p class="text-foreground/80 text-base sm:text-lg mb-2">19 de Noviembre, 2025</p>
+            <p class="text-foreground/70 text-sm sm:text-base">Jardín Japonés, Buenos Aires</p>
+          </div>
+
+          <div class="text-center mb-6 md:mb-8">
+            <p class="text-foreground/60 text-xs sm:text-sm mb-3">Para consultas, contáctanos:</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
+              <a href="mailto:boda@ejemplo.com"
+                class="text-foreground/80 hover:text-foreground transition-colors text-sm min-h-[44px] flex items-center">boda@ejemplo.com</a>
+              <span class="text-foreground/40 hidden sm:inline">•</span>
+              <a href="tel:+5491136846005"
+                class="text-foreground/80 hover:text-foreground transition-colors text-sm min-h-[44px] flex items-center">+54
+                9 11 3684-6005</a>
+            </div>
+          </div>
+
+          <div class="w-16 sm:w-24 h-px bg-foreground/20 mx-auto mb-4 sm:mb-6"></div>
+          <div class="text-center">
+            <p class="text-foreground/50 text-xs">© 2025 Cari y Juli. Hecho con amor.</p>
+          </div>
+        </div>
+      </footer>
+
     </div>
+  </div>
+  </div>
   </div>
 
   <!-- ====== Interacciones: menú, scroll, RSVP, combi ====== -->
@@ -970,12 +1169,12 @@
     })();
 
     /* -------- Lógica combi: radio + campos dependientes + sync teléfono -------- */
-    const combiYes   = document.getElementById('combiYes');
-    const combiNo    = document.getElementById('combiNo');
-    const combiFields= document.getElementById('combiFields');
+    const combiYes = document.getElementById('combiYes');
+    const combiNo = document.getElementById('combiNo');
+    const combiFields = document.getElementById('combiFields');
     const combiPhone = document.getElementById('combiPhone');
-    const phone      = document.getElementById('phone');
-    const phoneHint  = document.getElementById('phoneHint');
+    const phone = document.getElementById('phone');
+    const phoneHint = document.getElementById('phoneHint');
 
     function showCombiFields(show) {
       if (show) {
@@ -984,7 +1183,7 @@
         if (phone && combiPhone) {
           phone.value = combiPhone.value;
           phone.disabled = true;
-          phone.setAttribute('aria-disabled','true');
+          phone.setAttribute('aria-disabled', 'true');
           phoneHint?.classList.remove('hidden');
         }
       } else {
@@ -998,159 +1197,183 @@
     }
 
     combiYes?.addEventListener('change', () => showCombiFields(true));
-    combiNo?.addEventListener('change',  () => showCombiFields(false));
+    combiNo?.addEventListener('change', () => showCombiFields(false));
   </script>
-<script>
-  // ====== Config ======
-  const MP_BASE_LINK = "https://mpago.la/tu_link_general";
-  const CBU_VALUE    = "0000000000000000000000";
-  const ALIAS_VALUE  = "CARIJULI.AHORROS";
+  <script>
+    // ====== Config ======
+    const MP_BASE_LINK = "https://mpago.la/tu_link_general";
+    const CBU_VALUE = "0000000000000000000000";
+    const ALIAS_VALUE = "CARIJULI.AHORROS";
 
-  // ====== Refs ======
-  const modal        = document.getElementById('giftModal');
-  const form         = document.getElementById('giftForm');
-  const nameEl       = document.getElementById('giftName');
-  const priceEl      = document.getElementById('giftPrice');
-  const nameMiniEl   = document.getElementById('giftNameMini');
-  const btnClose     = document.getElementById('btnCloseGift');
-  const panelCBU     = document.getElementById('panelCBU');
-  const panelMP      = document.getElementById('panelMP');
-  const mpLink       = document.getElementById('mpLink');
-  const txtCBU       = document.getElementById('txtCBU');
-  const txtAlias     = document.getElementById('txtAlias');
-  const hiddenName   = document.getElementById('gift_name_input');
-  const hiddenPrice  = document.getElementById('gift_price_input');
-  const hiddenPay    = document.getElementById('gift_pay_method_input');
-  const toast        = document.getElementById('giftToast');
+    // ====== Refs ======
+    const modal = document.getElementById('giftModal');
+    const form = document.getElementById('giftForm');
+    const nameEl = document.getElementById('giftName');
+    const priceEl = document.getElementById('giftPrice');
+    const nameMiniEl = document.getElementById('giftNameMini');
+    const btnClose = document.getElementById('btnCloseGift');
+    const panelCBU = document.getElementById('panelCBU');
+    const panelMP = document.getElementById('panelMP');
+    const mpLink = document.getElementById('mpLink');
+    const txtCBU = document.getElementById('txtCBU');
+    const txtAlias = document.getElementById('txtAlias');
+    const hiddenName = document.getElementById('gift_name_input');
+    const hiddenPrice = document.getElementById('gift_price_input');
+    const hiddenPay = document.getElementById('gift_pay_method_input');
+    const toast = document.getElementById('giftToast');
 
-  txtCBU.value = CBU_VALUE;
-  txtAlias.value = ALIAS_VALUE;
+    txtCBU.value = CBU_VALUE;
+    txtAlias.value = ALIAS_VALUE;
 
-  // ==== Scroll lock (también iOS) ====
-  let scrollY = 0;
-  function lockScroll() {
-    scrollY = window.scrollY || window.pageYOffset;
-    document.documentElement.classList.add('overflow-hidden');
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.left = '0';
-    document.body.style.right = '0';
-    document.body.classList.add('overscroll-none', 'touch-none');
-  }
-  function unlockScroll() {
-    document.documentElement.classList.remove('overflow-hidden');
-    document.body.classList.remove('overscroll-none', 'touch-none');
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.left = '';
-    document.body.style.right = '';
-    window.scrollTo(0, scrollY);
-  }
+    // ==== Scroll lock (también iOS) ====
+    let scrollY = 0;
+    function lockScroll() {
+      scrollY = window.scrollY || window.pageYOffset;
+      document.documentElement.classList.add('overflow-hidden');
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.classList.add('overscroll-none', 'touch-none');
+    }
+    function unlockScroll() {
+      document.documentElement.classList.remove('overflow-hidden');
+      document.body.classList.remove('overscroll-none', 'touch-none');
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      window.scrollTo(0, scrollY);
+    }
 
-  // ==== Modal open/close ====
-  function openGiftModal(name, price, mpSpecificLink) {
-    nameEl.textContent     = name;
-    priceEl.textContent    = price;
-    nameMiniEl.textContent = name;
+    // ==== Modal open/close ====
+    const priceWrap = document.getElementById('giftPriceWrap');
 
-    hiddenName.value  = name;
-    hiddenPrice.value = price;
-    hiddenPay.value   = 'cbu';
+    function openGiftModal(name, price, mpSpecificLink) {
+      nameEl.textContent = name;
+      priceEl.textContent = price;
+      nameMiniEl.textContent = name;
 
-    mpLink.href = mpSpecificLink || `${MP_BASE_LINK}?ref=${encodeURIComponent(name)}`;
+      hiddenName.value = name;
+      hiddenPrice.value = price;
+      hiddenPay.value = 'cbu';
 
-    // estado visual
-    document.querySelector('input[name="payMethodUI"][value="cbu"]').checked = true;
-    panelCBU.classList.remove('hidden');
-    panelMP.classList.add('hidden');
+      // Mostrar/ocultar la parte de “valor”
+      if (!price || !String(price).trim()) priceWrap?.classList.add('hidden');
+      else priceWrap?.classList.remove('hidden');
 
-    // mostrar
-    modal.classList.remove('hidden');
-    lockScroll();
+      mpLink.href = mpSpecificLink || `${MP_BASE_LINK}?ref=${encodeURIComponent(name)}`;
 
-    // foco en el primer input
-    modal.querySelector('input[name="donantes"]')?.focus();
-  }
+      document.querySelector('input[name="payMethodUI"][value="cbu"]').checked = true;
+      panelCBU.classList.remove('hidden');
+      panelMP.classList.add('hidden');
 
-  function closeGiftModal() {
-    modal.classList.add('hidden');
-    unlockScroll();
-    resetGiftModal();
-  }
+      modal.classList.remove('hidden');
+      lockScroll();
+      modal.querySelector('input[name="donantes"]')?.focus();
+    }
 
-  // Limpia el form y vuelve a estado inicial
-  function resetGiftModal() {
-    form?.reset();                       // limpia inputs visibles
-    hiddenName.value = '';
-    hiddenPrice.value = '';
-    hiddenPay.value   = 'cbu';
-    panelMP.classList.add('hidden');
-    panelCBU.classList.remove('hidden');
-    mpLink.href = '#';
-  }
 
-  // Delegación: abrir desde botones .btn-regala
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.btn-regala');
-    if (!btn) return;
-    const name  = btn.dataset.name  || 'Regalo';
-    const price = btn.dataset.price || '';
-    const mlink = btn.dataset.mplink || null;
-    openGiftModal(name, price, mlink);
-  });
+    function closeGiftModal() {
+      modal.classList.add('hidden');
+      unlockScroll();
+      resetGiftModal();
+    }
 
-  // Cerrar
-  btnClose?.addEventListener('click', closeGiftModal);
-  modal?.addEventListener('click', (e) => {
-    // cerrar sólo si clickean fuera del diálogo
-    if (e.target === modal) closeGiftModal();
-  });
-  document.addEventListener('keydown', (e) => {
-    if (!modal.classList.contains('hidden') && e.key === 'Escape') closeGiftModal();
-  });
+    // Limpia el form y vuelve a estado inicial
+    function resetGiftModal() {
+      form?.reset();                       // limpia inputs visibles
+      hiddenName.value = '';
+      hiddenPrice.value = '';
+      hiddenPay.value = 'cbu';
+      panelMP.classList.add('hidden');
+      panelCBU.classList.remove('hidden');
+      mpLink.href = '#';
+    }
 
-  // Cambiar método de pago
-  document.querySelectorAll('input[name="payMethodUI"]').forEach(r => {
-    r.addEventListener('change', () => {
-      const val = r.value;
-      hiddenPay.value = val;
-      if (val === 'cbu') { panelCBU.classList.remove('hidden'); panelMP.classList.add('hidden'); }
-      else { panelMP.classList.remove('hidden'); panelCBU.classList.add('hidden'); }
+    // Delegación: abrir desde botones .btn-regala
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.btn-regala');
+      if (!btn) return;
+      const name = btn.dataset.name || 'Regalo';
+      const price = btn.dataset.price || '';
+      const mlink = btn.dataset.mplink || null;
+      openGiftModal(name, price, mlink);
     });
-  });
 
-  // Copiar
-  document.querySelectorAll('[data-copy]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const sel = btn.getAttribute('data-copy');
-      const input = document.querySelector(sel);
-      if (!input) return;
-      input.select(); input.setSelectionRange(0, 99999);
-      try {
-        document.execCommand('copy');
-        const old = btn.textContent;
-        btn.textContent = 'Copiado ✓';
-        setTimeout(() => btn.textContent = old, 1500);
-      } catch {}
+    // Cerrar
+    btnClose?.addEventListener('click', closeGiftModal);
+    modal?.addEventListener('click', (e) => {
+      // cerrar sólo si clickean fuera del diálogo
+      if (e.target === modal) closeGiftModal();
     });
-  });
+    document.addEventListener('keydown', (e) => {
+      if (!modal.classList.contains('hidden') && e.key === 'Escape') closeGiftModal();
+    });
 
-  // Enviar (asumimos pago realizado), cerrar y limpiar
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
+    // Cambiar método de pago
+    document.querySelectorAll('input[name="payMethodUI"]').forEach(r => {
+      r.addEventListener('change', () => {
+        const val = r.value;
+        hiddenPay.value = val;
+        if (val === 'cbu') { panelCBU.classList.remove('hidden'); panelMP.classList.add('hidden'); }
+        else { panelMP.classList.remove('hidden'); panelCBU.classList.add('hidden'); }
+      });
+    });
 
-    const fd = new FormData(form);
-    fd.append('timestamp', new Date().toISOString());
+    // Copiar
+    document.querySelectorAll('[data-copy]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const sel = btn.getAttribute('data-copy');
+        const input = document.querySelector(sel);
+        if (!input) return;
+        input.select(); input.setSelectionRange(0, 99999);
+        try {
+          document.execCommand('copy');
+          const old = btn.textContent;
+          btn.textContent = 'Copiado ✓';
+          setTimeout(() => btn.textContent = old, 1500);
+        } catch { }
+      });
+    });
 
-    try { await fetch(form.action, { method: 'POST', body: fd }); }
-    catch (_) { /* ignoramos errores, confiamos en el invitado */ }
+    // Enviar (asumimos pago realizado), cerrar y limpiar
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-    closeGiftModal(); // cierra + resetea + desbloquea scroll
-    toast?.classList.remove('hidden');
-    setTimeout(() => toast?.classList.add('hidden'), 2600);
-  });
-</script>
+      const fd = new FormData(form);
+      fd.append('timestamp', new Date().toISOString());
+
+      try { await fetch(form.action, { method: 'POST', body: fd }); }
+      catch (_) { /* ignoramos errores, confiamos en el invitado */ }
+
+      closeGiftModal(); // cierra + resetea + desbloquea scroll
+      toast?.classList.remove('hidden');
+      setTimeout(() => toast?.classList.add('hidden'), 2600);
+    });
+  </script>
+  <script>
+    (function sortGiftsDesc() {
+      const grid = document.querySelector('#giftGrid');
+      if (!grid) return;
+
+      // Tomamos solo los hijos que son DIV (las cards). Ignoramos el <article> (lead).
+      const cards = [...grid.children].filter(el => el.tagName === 'DIV');
+
+      const priceOf = (card) => {
+        const p = [...card.querySelectorAll('p')].find(n => /\$\s*\d/.test(n.textContent));
+        if (!p) return -1;
+        const n = parseInt(p.textContent.replace(/[^\d]/g, ''), 10);
+        return Number.isFinite(n) ? n : -1;
+      };
+
+      cards.sort((a, b) => priceOf(b) - priceOf(a));
+      cards.forEach(c => grid.appendChild(c));
+    })();
+  </script>
+
 
 
 </body>
+
 </html>
