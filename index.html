@@ -883,26 +883,62 @@
                     </label>
                   </div>
 
-                  <div id="panelCBU" class="mt-4 space-y-2">
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
-                      <span class="text-sm text-foreground/70">CBU</span>
-                      <input type="text" id="txtCBU" readonly value="0000000000000000000000"
-                        class="sm:col-span-2 w-full px-3 py-2 rounded-lg border border-border bg-input-background text-sm">
-                      <button type="button"
-                        class="col-span-1 sm:col-span-3 w-full sm:w-auto mt-1 sm:mt-0 px-3 py-2 rounded-lg border hover:bg-muted text-sm"
-                        data-copy="#txtCBU">Copiar CBU</button>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
-                      <span class="text-sm text-foreground/70">Alias</span>
-                      <input type="text" id="txtAlias" readonly value="CARIJULI.AHORROS"
-                        class="sm:col-span-2 w-full px-3 py-2 rounded-lg border border-border bg-input-background text-sm">
-                      <button type="button"
-                        class="col-span-1 sm:col-span-3 w-full sm:w-auto mt-1 sm:mt-0 px-3 py-2 rounded-lg border hover:bg-muted text-sm"
-                        data-copy="#txtAlias">Copiar Alias</button>
-                    </div>
-                    <p class="text-xs text-foreground/60 mt-3">En el detalle podés poner “Regalo <span id="giftNameMini"
-                        class="font-medium"></span>”. ¡Gracias!</p>
-                  </div>
+<div id="panelCBU" class="mt-4 space-y-4">
+  <!-- Cuenta en USD -->
+  <div class="p-3 rounded-lg border border-border bg-card space-y-2">
+    <p class="text-sm font-medium text-foreground">Cuenta en USD</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
+      <span class="text-sm text-foreground/70">CBU</span>
+      <input type="text" id="cbuUsd" readonly 
+        value="0110019831001909987070"
+        class="sm:col-span-2 w-full px-3 py-2 rounded-lg border border-border bg-input-background text-sm">
+      <button type="button"
+        class="col-span-1 sm:col-span-3 w-full sm:w-auto mt-1 sm:mt-0 px-3 py-2 rounded-lg border hover:bg-muted text-sm"
+        data-copy="#cbuUsd">Copiar CBU</button>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
+      <span class="text-sm text-foreground/70">Alias</span>
+      <input type="text" id="aliasUsd" readonly 
+        value="Cariyjuli.usd"
+        class="sm:col-span-2 w-full px-3 py-2 rounded-lg border border-border bg-input-background text-sm">
+      <button type="button"
+        class="col-span-1 sm:col-span-3 w-full sm:w-auto mt-1 sm:mt-0 px-3 py-2 rounded-lg border hover:bg-muted text-sm"
+        data-copy="#aliasUsd">Copiar Alias</button>
+    </div>
+  </div>
+
+  <!-- Cuenta en Pesos -->
+  <div class="p-3 rounded-lg border border-border bg-card space-y-2">
+    <p class="text-sm font-medium text-foreground">Cuenta en Pesos</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
+      <span class="text-sm text-foreground/70">CBU</span>
+      <input type="text" id="cbuPesos" readonly 
+        value="0110019830001909966715"
+        class="sm:col-span-2 w-full px-3 py-2 rounded-lg border border-border bg-input-background text-sm">
+      <button type="button"
+        class="col-span-1 sm:col-span-3 w-full sm:w-auto mt-1 sm:mt-0 px-3 py-2 rounded-lg border hover:bg-muted text-sm"
+        data-copy="#cbuPesos">Copiar CBU</button>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
+      <span class="text-sm text-foreground/70">Alias</span>
+      <input type="text" id="aliasPesos" readonly 
+        value="Cariyjuli.pesos"
+        class="sm:col-span-2 w-full px-3 py-2 rounded-lg border border-border bg-input-background text-sm">
+      <button type="button"
+        class="col-span-1 sm:col-span-3 w-full sm:w-auto mt-1 sm:mt-0 px-3 py-2 rounded-lg border hover:bg-muted text-sm"
+        data-copy="#aliasPesos">Copiar Alias</button>
+    </div>
+  </div>
+
+  <p class="text-xs text-foreground/60 mt-3">
+    En el detalle podés poner “Regalo <span id="giftNameMini" class="font-medium"></span>”. ¡Gracias!
+  </p>
+</div>
+
                 </div>
 
                 <!-- Acciones sticky -->
