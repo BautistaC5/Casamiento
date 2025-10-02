@@ -975,7 +975,7 @@
       <section id="rsvp" class="py-16 md:py-20 lg:py-32 bg-background scroll-mt-[var(--header-h)]">
         <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <form action="enviar.php" method="POST" id="rsvpForm"
+          <form action="#" method="POST" id="rsvpForm"
             class="space-y-5 sm:space-y-6 animate-fade-in bg-card rounded-xl p-4 sm:p-5 elegant-border"
             style="animation-delay:.2s">
             <div id="invitados" class="space-y-6">
@@ -1094,7 +1094,7 @@
             <p class="text-foreground/60 text-xs sm:text-sm mb-3">Para consultas, contáctanos:</p>
             <div class="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
               <a href="mailto:boda@ejemplo.com"
-                class="text-foreground/80 hover:text-foreground transition-colors text-sm min-h-[44px] flex items-center">boda@ejemplo.com</a>
+                class="text-foreground/80 hover:text-foreground transition-colors text-sm min-h-[44px] flex items-center">casamiento@cariyjuli.com</a>
               <span class="text-foreground/40 hidden sm:inline">•</span>
               <a href="tel:+5491136846005"
                 class="text-foreground/80 hover:text-foreground transition-colors text-sm min-h-[44px] flex items-center">+54
@@ -1511,6 +1511,62 @@
 
     })();
   </script>
+
+<script>
+document.getElementById('rsvpForm').addEventListener('submit', async function (ev) {
+  ev.preventDefault();
+  const form = ev.currentTarget;
+
+  const nombre   = (form.querySelector('[name="nombre[]"]')   ?.value || '').trim();
+  const apellido = (form.querySelector('[name="apellido[]"]') ?.value || '').trim();
+  const menu     = (form.querySelector('[name="menu[]"]')     ?.value || '').trim();
+  const alergiaI = (form.querySelector('[name="alergia[]"]')  ?.value || '').trim();
+  const mayorRaw = (form.querySelector('input[name="mayor_edad"]:checked')?.value || '').trim(); // 'si'|'no'|''
+  const telefono = (form.querySelector('[name="phone"]')      ?.value || '').trim();
+  const combiRaw = (form.querySelector('input[name="usa_combi"]:checked')?.value || '').trim();  // 'si'|'no'
+  const barrioI  = (form.querySelector('[name="combi_barrio"]')?.value || '').trim();
+  const mensaje  = (form.querySelector('[name="message"]')    ?.value || '');
+
+  // Reglas pedidas
+  const alergia  = alergiaI || 'N/A';
+  const mayor    = mayorRaw === 'si' ? 'Sí' : (mayorRaw === 'no' ? 'No' : '');
+  const combi    = (combiRaw === 'si') ? 'Sí' : 'N/A';
+  const barrio   = (combiRaw === 'si' && barrioI) ? barrioI : 'N/A';
+
+  const payload = new URLSearchParams({
+    token:   'prueba1234', // debe coincidir con TOKEN en GAS
+    nombre, apellido, menu, alergia, mayor, telefono, combi, barrio,
+    mensaje: (mensaje ?? '')
+  });
+
+  const ENDPOINT = '1nMAhs2x0wIiqZW0GZWt1ywgB49OUaU6SLsD9e2tyIvutAxt2fXvN6_PG'; // tu Web App URL
+
+  // UX: deshabilita botón para evitar doble envío
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const oldText = submitBtn?.textContent;
+  if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Enviando...'; }
+
+  try {
+    const res  = await fetch(ENDPOINT, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
+      body: payload.toString()
+    });
+    const json = await res.json().catch(() => ({}));
+    if (json.status === 'ok') {
+      alert('¡Confirmación enviada!');
+      form.reset();
+      document.getElementById('combiFields')?.classList.add('hidden');
+    } else {
+      alert('Hubo un problema al enviar. Probá de nuevo.');
+    }
+  } catch (e) {
+    alert('Error de red. Intentá nuevamente.');
+  } finally {
+    if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = oldText || 'Confirmar Asistencia'; }
+  }
+});
+</script>
 
 
 </body>

@@ -1,7 +1,6 @@
 <?php
 
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 require __DIR__ . '/mailer/Exception.php';
@@ -9,269 +8,176 @@ require __DIR__ . '/mailer/PHPMailer.php';
 require __DIR__ . '/mailer/SMTP.php';
 
 /* =========================
-   Configuración básica
+   Configuración
    ========================= */
-const SMTP_HOST = 'c2760078.ferozo.com';        // DonWeb SMTP
-const SMTP_PORT = 465;                           // SSL
+const SMTP_HOST = 'c2760078.ferozo.com';
+const SMTP_PORT = 465; // SSL
 const SMTP_USER = 'TU_CORREO@tudominio.com';     // <-- Cambiar
-const SMTP_PASS = 'TU_PASSWORD_SMTP_SEGURA';     // <-- Cambiar (mejor usar .env)
-const FROM_EMAIL = 'invitaciones@tudominio.com'; // Remitente mostrado
+const SMTP_PASS = 'TU_PASSWORD_SMTP_SEGURA';     // <-- Cambiar
+const FROM_EMAIL = 'invitaciones@tudominio.com'; // <-- Cambiar
 const FROM_NAME  = 'Tarjeta de Invitación';
-const FALLBACK_CLIENT_EMAIL = 'cliente@tudominio.com'; // Destinatario si no viene por POST
+const RECIPIENT_EMAIL = 'cliente@tudominio.com'; // <-- Cambiar (destinatario)
+const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbycp2d-K2p1k5vu2B6jDuofCmlgkG9EP0PuhnhtwtpFKqo0xkfw5QoOgkdsv1EbMUMU/exec'; // <-- Cambiar
 
-// Helper seguro para escapar HTML
 function e($str)
 {
-    return htmlspecialchars((string)$str ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+  return htmlspecialchars((string)($str ?? ''), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo 'Acceso denegado.';
-    exit;
+  http_response_code(405);
+  echo 'Acceso denegado.';
+  exit;
 }
 
 /* =========================
-   Recolectar y sanitizar
+   Recolectar datos del form
    ========================= */
-$names   = isset($_POST['nombre'])  && is_array($_POST['nombre'])  ? array_map('trim', $_POST['nombre'])  : [];
-$surns   = isset($_POST['apellido']) && is_array($_POST['apellido']) ? array_map('trim', $_POST['apellido']) : [];
-$menus   = isset($_POST['menu'])    && is_array($_POST['menu'])    ? array_map('trim', $_POST['menu'])    : [];
+// Invitado único (tu form usa arrays pero hay 1 invitado)
+$nombre   = isset($_POST['nombre'][0])   ? trim($_POST['nombre'][0])   : '';
+$apellido = isset($_POST['apellido'][0]) ? trim($_POST['apellido'][0]) : '';
+$menu     = isset($_POST['menu'][0])     ? trim($_POST['menu'][0])     : '';
 
-$regalo  = trim($_POST['regalo']  ?? '');
-$mensaje = trim($_POST['mensaje'] ?? '');
+$alergia     = isset($_POST['alergia'][0]) ? trim($_POST['alergia'][0]) : '';
+$mayorRaw    = $_POST['mayor_edad']  ?? '';   // 'si' | 'no'
+$telefono    = trim($_POST['phone']   ?? '');
+$usaCombiRaw = $_POST['usa_combi']    ?? '';   // 'si' | 'no'
+$barrio      = trim($_POST['combi_barrio'] ?? '');
+$mensaje     = (string)($_POST['message'] ?? ''); // si viene null -> ''
 
-$emailCliente   = filter_var($_POST['email_cliente']   ?? FALLBACK_CLIENT_EMAIL, FILTER_VALIDATE_EMAIL) ?: FALLBACK_CLIENT_EMAIL;
-$emailRemitente = filter_var($_POST['email_remitente'] ?? '', FILTER_VALIDATE_EMAIL) ?: null;
+// Reglas pedidas
+$alergia = $alergia !== '' ? $alergia : 'N/A';
+$combi   = ($usaCombiRaw === 'si') ? 'Sí' : 'N/A';     // si no usa combi -> N/A
+$barrio  = ($usaCombiRaw === 'si' && $barrio !== '') ? $barrio : 'N/A';
+$mayor   = ($mayorRaw === 'si') ? 'Sí' : (($mayorRaw === 'no') ? 'No' : ''); // sin regla especial
 
-// Limitar a 5 invitados
-$maxInvitados = 5;
-$names = array_slice($names, 0, $maxInvitados);
-$surns = array_slice($surns, 0, $maxInvitados);
-$menus = array_slice($menus, 0, $maxInvitados);
-
-// Empaquetar invitados válidos (nombre o apellido no vacíos)
-$invitados = [];
-for ($i = 0; $i < max(count($names), count($surns), count($menus)); $i++) {
-    $n = $names[$i] ?? '';
-    $a = $surns[$i] ?? '';
-    $m = $menus[$i] ?? '';
-    if ($n !== '' || $a !== '') {
-        $invitados[] = ['nombre' => $n, 'apellido' => $a, 'menu' => $m];
-    }
-}
+$ip        = $_SERVER['REMOTE_ADDR']      ?? '';
+$userAgent = $_SERVER['HTTP_USER_AGENT']  ?? '';
+$fecha     = date('d/m/Y H:i');
 
 /* =========================
-   Tarjetita HTML (Times NR)
-   Paleta:
-   bg: #F8EDDB | primario: #F1772D
-   acento: #A882BF | secundario: #19734F
+   Tarjeta HTML del mail
    ========================= */
-$fecha = date('d/m/Y H:i');
-$ip    = $_SERVER['REMOTE_ADDR'] ?? '';
+$detalleInvitado = '
+  <div style="background:#eef8fc;border:1px solid #d9eef8;border-radius:12px;padding:14px;margin:10px 0;font-family:\'Times New Roman\',Times,serif;color:#1e1938">
+    <div style="display:inline-block;font-size:12px;padding:4px 10px;border-radius:999px;background:#A882BF;color:#fff;margin-bottom:10px">Invitado</div>
+    <div style="margin:6px 0"><strong>Nombre:</strong> ' . e($nombre) . '</div>
+    <div style="margin:6px 0"><strong>Apellido:</strong> ' . e($apellido) . '</div>
+    <div style="margin:6px 0"><strong>Menú:</strong> <span style="display:inline-block;padding:3px 8px;border-radius:8px;border:1px solid #A882BF;color:#A882BF;background:#fbf7ff;font-size:13px">' . e($menu) . '</span></div>
+    <div style="margin:6px 0"><strong>Alergia:</strong> ' . e($alergia) . '</div>
+    <div style="margin:6px 0"><strong>Mayor de 18:</strong> ' . e($mayor) . '</div>
+    <div style="margin:6px 0"><strong>Teléfono:</strong> ' . e($telefono) . '</div>
+    <div style="margin:6px 0"><strong>Combi:</strong> ' . e($combi) . '</div>
+    <div style="margin:6px 0"><strong>Barrio:</strong> ' . e($barrio) . '</div>
+  </div>';
 
-$guestBlocks = '';
-if (count($invitados) > 0) {
-    foreach ($invitados as $idx => $g) {
-        $guestBlocks .= '
-      <div class="guest">
-        <div class="pill">Invitado ' . ($idx + 1) . '</div>
-        <div class="row"><span class="label">Nombre</span><span class="value">' . e($g['nombre']) . '</span></div>
-        <div class="row"><span class="label">Apellido</span><span class="value">' . e($g['apellido']) . '</span></div>
-        <div class="row"><span class="label">Menú</span><span class="tag">' . e($g['menu']) . '</span></div>
-      </div>
-    ';
-    }
-} else {
-    $guestBlocks = '
-    <div class="guest">
-      <div class="row"><span class="value">No se informó ningún invitado.</span></div>
-    </div>
-  ';
-}
-
-$giftBlock = $regalo !== '' ? '<div class="gift-box"><span class="gift-label">Regalo elegido</span><div class="gift">' . e($regalo) . '</div></div>' : '';
-
-$messageBlock = $mensaje !== '' ? '
-  <div class="message">
-    <div class="message-title">Mensaje para los novios</div>
-    <blockquote>' . nl2br(e($mensaje)) . '</blockquote>
+$mensajeBlock = ($mensaje !== '') ? '
+  <div style="margin:18px 0">
+    <div style="font-size:16px;color:#19734F;font-weight:bold;margin-bottom:8px">Mensaje para los novios</div>
+    <blockquote style="margin:0;padding:14px 16px;border-left:6px solid #F1772D;background:#FFF7F1;border-radius:8px">' . nl2br(e($mensaje)) . '</blockquote>
   </div>' : '';
 
-$mensajeHTML = '
-<!doctype html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<title>Confirmación recibida</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-  /* Tipografía */
-  body, table, div, p, span {
-    font-family: "Times New Roman", Times, serif;
-  }
-  body {
-    margin:0; padding:0; background:#F8EDDB;
-  }
-  .container {
-    max-width:640px; margin:24px auto; background:#ffffff; 
-    border-radius:16px; overflow:hidden; 
-    box-shadow:0 6px 24px rgba(30,25,56,.12);
-    border:1px solid #F3E8D8;
-  }
-  .header {
-    background:#F1772D; color:#fff; padding:20px 24px; text-align:center;
-  }
-  .header h1 {
-    margin:0; font-size:28px; line-height:1.2; letter-spacing:.2px;
-  }
-  .subheader {
-    background:#F8EDDB; color:#1e1938; padding:8px 24px; text-align:center; font-size:14px;
-  }
-  .content {
-    padding:24px;
-    color:#1e1938;
-  }
-  .section-title {
-    font-size:18px; margin:0 0 12px; color:#19734F;
-    border-left:6px solid #19734F; padding-left:10px;
-  }
-  .guest {
-    background:#eef8fc; /* suave */
-    border:1px solid #d9eef8; 
-    border-radius:12px;
-    padding:14px; margin:10px 0;
-  }
-  .pill {
-    display:inline-block; font-size:12px; padding:4px 10px; border-radius:999px;
-    background:#A882BF; color:#fff; margin-bottom:10px;
-  }
-  .row {
-    display:flex; gap:8px; align-items:baseline; margin:6px 0;
-  }
-  .label {
-    min-width:90px; font-weight:bold; color:#1e1938;
-  }
-  .value {
-    flex:1;
-  }
-  .tag {
-    display:inline-block; padding:3px 8px; border-radius:8px; border:1px solid #A882BF; color:#A882BF;
-    font-size:13px;
-    background:#fbf7ff;
-  }
-  .gift-box {
-    border:1px solid #A882BF; border-radius:12px; padding:14px; margin:18px 0; background:#fbf7ff;
-  }
-  .gift-label {
-    display:inline-block; font-size:12px; color:#A882BF; border:1px dashed #A882BF; padding:2px 8px; border-radius:999px; margin-bottom:8px;
-  }
-  .gift {
-    font-size:16px; font-weight:bold; color:#1e1938; margin-top:6px;
-  }
-  .message {
-    margin:18px 0; padding:0;
-  }
-  .message-title {
-    font-size:16px; color:#19734F; font-weight:bold; margin-bottom:8px;
-  }
-  blockquote {
-    margin:0; padding:14px 16px; border-left:6px solid #F1772D; background:#FFF7F1; border-radius:8px;
-  }
-  .meta {
-    margin-top:18px; font-size:12px; color:#555;
-  }
-  .footer {
-    background:#F8EDDB; color:#1e1938; padding:16px 24px; text-align:center; font-size:13px;
-    border-top:1px solid #F3E8D8;
-  }
-  .badge {
-    display:inline-block; background:#19734F; color:#fff; padding:4px 10px; border-radius:999px; font-size:12px;
-  }
-  @media (prefers-color-scheme: dark) {
-    .container { background:#1f1b2f; border-color:#2b244d; }
-    .content, .footer, .subheader, .label, .value { color:#f4f4f4; }
-    .guest { background:#25203a; border-color:#3a315e; }
-    .tag { background:#2b244d; color:#e8daf5; border-color:#A882BF; }
-    blockquote { background:#392b24; color:#fff; }
-  }
-</style>
-</head>
-<body>
-  <div class="container">
-    <div class="header"><h1>Confirmación recibida</h1></div>
-    <div class="subheader">
-      <span class="badge">¡Gracias por confirmar!</span>
+$bodyHTML = '
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Confirmación de asistencia</title></head>
+<body style="margin:0;padding:0;background:#F8EDDB">
+  <div style="max-width:640px;margin:24px auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 6px 24px rgba(30,25,56,.12);border:1px solid #F3E8D8">
+    <div style="background:#F1772D;color:#fff;padding:20px 24px;text-align:center;font-family:\'Times New Roman\',Times,serif">
+      <h1 style="margin:0;font-size:28px;line-height:1.2;letter-spacing:.2px">Confirmación recibida</h1>
     </div>
-    <div class="content">
-      <h2 class="section-title">Detalle de invitados</h2>
-      ' . $guestBlocks . '
-      ' . ($giftBlock ? '<h2 class="section-title">Regalo</h2>' . $giftBlock : '') . '
-      ' . ($messageBlock ? '<h2 class="section-title">Cartita</h2>' . $messageBlock : '') . '
-      <div class="meta">
-        Enviado el ' . $fecha . ' · IP: ' . e($ip) . '
-      </div>
+    <div style="background:#F8EDDB;color:#1e1938;padding:8px 24px;text-align:center;font-size:14px;font-family:\'Times New Roman\',Times,serif">
+      ¡Gracias por confirmar!
     </div>
-    <div class="footer">
+    <div style="padding:24px;color:#1e1938;font-family:\'Times New Roman\',Times,serif">
+      <h2 style="font-size:18px;margin:0 0 12px;color:#19734F;border-left:6px solid #19734F;padding-left:10px">Detalle</h2>
+      ' . $detalleInvitado . '
+      ' . $mensajeBlock . '
+      <div style="margin-top:18px;font-size:12px;color:#555">Enviado el ' . e($fecha) . ' · IP: ' . e($ip) . '</div>
+    </div>
+    <div style="background:#F8EDDB;color:#1e1938;padding:16px 24px;text-align:center;font-size:13px;border-top:1px solid #F3E8D8;font-family:\'Times New Roman\',Times,serif">
       Nos vemos en la fiesta ✨
     </div>
   </div>
-</body>
-</html>
-';
+</body></html>';
 
-// Versión de texto plano (fallback)
-$altBody = "Confirmación recibida\n\n";
-if (count($invitados) > 0) {
-    foreach ($invitados as $i => $g) {
-        $altBody .= "Invitado " . ($i + 1) . ": " . ($g['nombre'] ?: '-') . " " . ($g['apellido'] ?: '-') . " | Menú: " . ($g['menu'] ?: '-') . "\n";
-    }
-}
-if ($regalo !== '') {
-    $altBody .= "\nRegalo elegido: " . $regalo . "\n";
-}
-if ($mensaje !== '') {
-    $altBody .= "\nMensaje para los novios:\n" . $mensaje . "\n";
-}
-$altBody .= "\nEnviado el $fecha\n";
+$altBody = "Confirmación recibida\n\n" .
+  "Nombre: $nombre\nApellido: $apellido\nMenú: $menu\nAlergia: $alergia\nMayor de 18: $mayor\n" .
+  "Teléfono: $telefono\nCombi: $combi\nBarrio: $barrio\n\n" .
+  ($mensaje !== '' ? "Mensaje:\n$mensaje\n\n" : "") .
+  "Enviado el $fecha\n";
 
 /* =========================
-   Envío con PHPMailer
+   Enviar a Google Sheets
+   ========================= */
+$payload = [
+  'nombre'   => $nombre,
+  'apellido' => $apellido,
+  'menu'     => $menu,
+  'alergia'  => $alergia,              // "N/A" si estaba vacío
+  'mayor'    => $mayor,                // "Sí" | "No" | ""
+  'telefono' => $telefono,
+  'combi'    => $combi,                // "Sí" si usa combi, si no: "N/A"
+  'barrio'   => $barrio,               // "N/A" si no usa combi o vacío
+  'mensaje'  => $mensaje               // "" si venía null
+];
+
+$curlOk = true;
+$curlResp = null;
+$curlCode = null;
+if (filter_var(GOOGLE_APPS_SCRIPT_URL, FILTER_VALIDATE_URL)) {
+  $ch = curl_init(GOOGLE_APPS_SCRIPT_URL);
+  curl_setopt($ch, CURLOPT_POST, true);
+  curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload, JSON_UNESCAPED_UNICODE));
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  $curlResp = curl_exec($ch);
+  $curlCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+  if ($curlResp === false || $curlCode >= 400) {
+    $curlOk = false;
+  }
+  curl_close($ch);
+}
+
+/* =========================
+   Enviar mail (PHPMailer)
    ========================= */
 $mail = new PHPMailer(true);
-
 try {
-    $mail->isSMTP();
-    $mail->Host       = SMTP_HOST;
-    $mail->SMTPAuth   = true;
-    $mail->Username   = SMTP_USER;
-    $mail->Password   = SMTP_PASS;
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-    $mail->Port       = SMTP_PORT;
+  $mail->isSMTP();
+  $mail->Host       = SMTP_HOST;
+  $mail->SMTPAuth   = true;
+  $mail->Username   = SMTP_USER;
+  $mail->Password   = SMTP_PASS;
+  $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+  $mail->Port       = SMTP_PORT;
 
-    $mail->CharSet = 'UTF-8';
-    $mail->setFrom(FROM_EMAIL, FROM_NAME);
-    $mail->addAddress($emailCliente, 'Cliente');
+  $mail->CharSet = 'UTF-8';
+  $mail->setFrom(FROM_EMAIL, FROM_NAME);
+  $mail->addAddress(RECIPIENT_EMAIL, 'Organizador');
 
-    // Si el usuario dejó su email, lo ponemos como Reply-To:
-    if ($emailRemitente) {
-        $mail->addReplyTo($emailRemitente);
-    }
+  $mail->isHTML(true);
+  $mail->Subject = 'Confirmación de asistencia';
+  $mail->Body    = $bodyHTML;
+  $mail->AltBody = $altBody;
 
-    $mail->isHTML(true);
-    $mail->Subject = 'Confirmación de asistencia';
-    $mail->Body    = $mensajeHTML;
-    $mail->AltBody = $altBody;
+  $sent = $mail->send();
 
-    if ($mail->send()) {
-        // Redirigí a una página de “gracias”
-        // header('Location: confirmacion.html'); exit;
-        echo 'OK';
-    } else {
-        http_response_code(500);
-        echo "Error al enviar el mensaje: " . $mail->ErrorInfo;
-    }
+  // Respuesta simple (podés cambiar a redirect si querés)
+  header('Content-Type: application/json; charset=utf-8');
+  echo json_encode([
+    'status' => ($sent ? 'ok' : 'mail_error'),
+    'sheets' => ($curlOk ? 'ok' : 'sheets_error'),
+    'sheets_http' => $curlCode,
+    'sheets_resp' => $curlResp
+  ], JSON_UNESCAPED_UNICODE);
 } catch (Exception $e) {
-    http_response_code(500);
-    echo "Error al enviar el mensaje: " . $mail->ErrorInfo;
+  http_response_code(500);
+  header('Content-Type: application/json; charset=utf-8');
+  echo json_encode([
+    'status' => 'mail_exception',
+    'error'  => $e->getMessage(),
+    'sheets' => ($curlOk ? 'ok' : 'sheets_error'),
+    'sheets_http' => $curlCode,
+    'sheets_resp' => $curlResp
+  ], JSON_UNESCAPED_UNICODE);
 }
